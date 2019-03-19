@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ILogger.cs" />
-    <Compile Include="ISeperation.cs" />
+    <Compile Include="IConditions.cs" />
     <Compile Include="ISplitter.cs" />
     <Compile Include="ITrack.cs" />
     <Compile Include="ITransponderReciver.cs" />
