@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirTrafficHandIn
 {
-    class Logger
+    class ConsoleLogger
     {
     }
 }
