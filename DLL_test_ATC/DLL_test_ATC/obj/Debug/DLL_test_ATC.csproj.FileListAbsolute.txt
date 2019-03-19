@@ -1,0 +1,7 @@
+C:\Users\Berdie\OneDrive\UNI\AU\4.semester\SWT\DLL_test_ATC\DLL_test_ATC\DLL_test_ATC\bin\Debug\DLL_test_ATC.exe.config
+C:\Users\Berdie\OneDrive\UNI\AU\4.semester\SWT\DLL_test_ATC\DLL_test_ATC\DLL_test_ATC\bin\Debug\DLL_test_ATC.exe
+C:\Users\Berdie\OneDrive\UNI\AU\4.semester\SWT\DLL_test_ATC\DLL_test_ATC\DLL_test_ATC\bin\Debug\DLL_test_ATC.pdb
+C:\Users\Berdie\OneDrive\UNI\AU\4.semester\SWT\DLL_test_ATC\DLL_test_ATC\DLL_test_ATC\obj\Debug\DLL_test_ATC.csprojAssemblyReference.cache
+C:\Users\Berdie\OneDrive\UNI\AU\4.semester\SWT\DLL_test_ATC\DLL_test_ATC\DLL_test_ATC\obj\Debug\DLL_test_ATC.csproj.CoreCompileInputs.cache
+C:\Users\Berdie\OneDrive\UNI\AU\4.semester\SWT\DLL_test_ATC\DLL_test_ATC\DLL_test_ATC\obj\Debug\DLL_test_ATC.exe
+C:\Users\Berdie\OneDrive\UNI\AU\4.semester\SWT\DLL_test_ATC\DLL_test_ATC\DLL_test_ATC\obj\Debug\DLL_test_ATC.pdb
