@@ -8,5 +8,8 @@ namespace AirTrafficHandIn
 {
     public interface ITrack
     {
+        void calculateSpeed(Track A, Track B);
+
+        void calculateCompassCourse(Track A, Track B);
     }
 }

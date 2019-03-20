@@ -8,9 +8,9 @@ namespace AirTrafficHandIn.Interfaces
 {
     public interface ILogger
     {
-        void LogTrackEntered(object sender, ICollection<Tracks> logtrack);
+        void LogTrackEntered(object sender, ICollection<Track> logtrack);
         void LogSeperation(object sender, ICollection<string> logtrack);
-        void LogTrackData(object sender, ICollection<Tracks> logtracks);
+        void LogTrackData(object sender, ICollection<Track> logtracks);
 
         void clear();
     }

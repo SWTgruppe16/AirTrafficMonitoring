@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirTrafficHandIn
 {
-    public class Tracks
+    public class Track
     {
         public string TagId { get; set; }
         public int X { get; set; }
@@ -15,5 +15,12 @@ namespace AirTrafficHandIn
         public double Velocity { get; set; }
         public double CompassCourse { get; set; }
         public DateTime TimeStamp { get; set; }
+
+        public override string ToString()
+        {
+            return "{ID: " + TagId + " (" + X + "," + Y + "," + Altitude + ") Speed: " + Velocity + "}";
+        }
     }
+
+    
 }

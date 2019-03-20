@@ -13,7 +13,7 @@ namespace AirTrafficHandIn
         private string trackEnteredString = "";
         private string trackSeperation = "";
 
-        public void LogTrackEntered(object sender, ICollection<Tracks> logtrack)
+        public void LogTrackEntered(object sender, ICollection<Track> logtrack)
         {
             throw new NotImplementedException();
         }
@@ -23,7 +23,7 @@ namespace AirTrafficHandIn
             throw new NotImplementedException();
         }
 
-        public void LogTrackData(object sender, ICollection<Tracks> logtracks)
+        public void LogTrackData(object sender, ICollection<Track> logtracks)
         {
             throw new NotImplementedException();
         }

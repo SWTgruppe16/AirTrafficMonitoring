@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace AirTrafficHandIn
 {
-    public interface IConditions
+    public interface ICondition
     {
-        List<string> ListOfConditions(List<Tracks> tracks);
+        DateTime TimeOfOccurance { get; }
+        List<string> InvolvedTagIds { get; }
+        String TypeOfCondition { get; }
     }
 }

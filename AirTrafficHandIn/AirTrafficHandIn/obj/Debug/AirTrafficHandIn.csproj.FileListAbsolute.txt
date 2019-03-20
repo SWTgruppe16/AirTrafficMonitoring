@@ -1,0 +1,15 @@
+C:\Users\carol\source\repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn\bin\Debug\AirTrafficHandIn.exe.config
+C:\Users\carol\source\repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn\bin\Debug\AirTrafficHandIn.exe
+C:\Users\carol\source\repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn\bin\Debug\AirTrafficHandIn.pdb
+C:\Users\carol\source\repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn\bin\Debug\NSubstitute.dll
+C:\Users\carol\source\repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn\bin\Debug\NSubstituteAutoMocker.dll
+C:\Users\carol\source\repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn\bin\Debug\nunit.framework.dll
+C:\Users\carol\source\repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn\bin\Debug\TransponderReceiver.dll
+C:\Users\carol\source\repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn\bin\Debug\NSubstitute.xml
+C:\Users\carol\source\repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn\bin\Debug\nunit.framework.pdb
+C:\Users\carol\source\repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn\bin\Debug\nunit.framework.xml
+C:\Users\carol\source\repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn\obj\Debug\AirTrafficHandIn.csprojAssemblyReference.cache
+C:\Users\carol\source\repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn\obj\Debug\AirTrafficHandIn.csproj.CoreCompileInputs.cache
+C:\Users\carol\source\repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn\obj\Debug\AirTrafficHandIn.csproj.CopyComplete
+C:\Users\carol\source\repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn\obj\Debug\AirTrafficHandIn.exe
+C:\Users\carol\source\repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn\obj\Debug\AirTrafficHandIn.pdb

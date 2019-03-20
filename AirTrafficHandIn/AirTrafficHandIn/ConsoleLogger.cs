@@ -15,7 +15,7 @@ namespace AirTrafficHandIn
 
 
 
-        public void LogTrackEntered(object sender, ICollection<Tracks> logtrack)
+        public void LogTrackEntered(object sender, ICollection<Track> logtrack)
         {
             foreach (var plane_info in logtrack)
             {
@@ -33,7 +33,7 @@ namespace AirTrafficHandIn
             }
         }
 
-        public void LogTrackData(object sender, ICollection<Tracks> logtracks)
+        public void LogTrackData(object sender, ICollection<Track> logtracks)
         {
             //Kalle hjælp
         }
