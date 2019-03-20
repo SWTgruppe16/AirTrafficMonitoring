@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using TransponderReceiver;
 
-namespace AirTrafficHandIn
+namespace AirTrafficHandIn.Interfaces
 {
     public interface ISplitter
     {
         void SplitData(object sender, RawTransponderDataEventArgs data);
-        event EventHandler<List<Tracks>> SplitDataEventHandler;
+
+        event EventHandler<NewTrackArgs> newTrack;
     }
 }

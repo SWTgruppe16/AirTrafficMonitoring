@@ -5,23 +5,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TransponderReceiver;
+using AirTrafficHandIn.Interfaces;
 
 namespace AirTrafficHandIn
 {
+    public class NewTrackArgs : EventArgs
+    {
+        public List<Tracks> tracks_ { get; set; }
+    }
+
     public class Splitter : ISplitter
     {
+        private List<Tracks> tracks; 
 
         public Splitter(ITransponderReceiver transponderData)
         {
             transponderData.TransponderDataReady += SplitData;
+            tracks = new List<Tracks>(); //Create list
         }
 
-        public event EventHandler<List<Tracks>> SplitDataEventHandler;
+        public event EventHandler<NewTrackArgs> newTrack;
+
 
         public void SplitData(object sender, RawTransponderDataEventArgs data)
         {
-            List<Tracks> tracks = new List<Tracks>(); //Create list
-
             foreach (string planeinfo in data.TransponderData)
             {
                 //Use ";" as seperator for splitting data
@@ -47,12 +54,19 @@ namespace AirTrafficHandIn
                     Altitude = altitude,
                     TimeStamp = dateTime,
                 });
+
+                OnNewTrackUpdated(tracks);
             }
-
-
 
         }
 
+        protected virtual void OnNewTrackUpdated(List<Tracks> tracks)
+        {
+            if (newTrack != null)
+            {
+                newTrack(this, new NewTrackArgs(){tracks_ = tracks});
+            }
+        }
         
     }
 }

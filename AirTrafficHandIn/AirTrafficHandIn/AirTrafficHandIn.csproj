@@ -58,6 +58,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileLogger.cs" />
+    <Compile Include="InAirspace.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Interfaces\IConditions.cs" />
     <Compile Include="Interfaces\ISplitter.cs" />
