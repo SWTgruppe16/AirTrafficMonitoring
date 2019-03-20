@@ -7,7 +7,7 @@ using TransponderReceiver;
 
 namespace AirTrafficHandIn
 {
-    interface ISplitter
+    public interface ISplitter
     {
         void SplitData(object sender, RawTransponderDataEventArgs data);
         event EventHandler<List<Tracks>> SplitDataEventHandler;

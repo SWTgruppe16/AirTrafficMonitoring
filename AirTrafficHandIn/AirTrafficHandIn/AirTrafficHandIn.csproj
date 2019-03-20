@@ -62,7 +62,6 @@
     <Compile Include="Interfaces\IConditions.cs" />
     <Compile Include="Interfaces\ISplitter.cs" />
     <Compile Include="Interfaces\ITrack.cs" />
-    <Compile Include="Interfaces\ITransponderReciver.cs" />
     <Compile Include="ConsoleLogger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

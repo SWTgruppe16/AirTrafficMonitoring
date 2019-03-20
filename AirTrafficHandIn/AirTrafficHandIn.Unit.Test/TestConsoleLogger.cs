@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AirTrafficHandIn
+namespace AirTrafficHandIn.Unit.Test
 {
-    public interface ITrack
+    class TestConsoleLogger
     {
     }
 }

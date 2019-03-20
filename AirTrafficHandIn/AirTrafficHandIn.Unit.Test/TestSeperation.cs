@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirTrafficHandIn.Unit.Test
 {
-    public class Class1
+    class TestSeperation
     {
     }
 }

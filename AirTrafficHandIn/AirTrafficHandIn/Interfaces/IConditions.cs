@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AirTrafficHandIn
 {
-    interface IConditions
+    public interface IConditions
     {
+        List<string> ListOfConditions(List<Tracks> tracks);
     }
 }

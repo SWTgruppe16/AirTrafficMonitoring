@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirTrafficHandIn
 {
-    class Tracks
+    public class Tracks
     {
         public string TagId { get; set; }
         public int X { get; set; }
