@@ -44,7 +44,7 @@ namespace AirTrafficHandIn
             {
                 Console.Clear();
             }
-            catch (IOException e) //IO = Invalid Operation Exception 
+            catch (IOException logtracks) //IO = Invalid Operation Exception 
             {
                 //Used for unit testing.
             }
