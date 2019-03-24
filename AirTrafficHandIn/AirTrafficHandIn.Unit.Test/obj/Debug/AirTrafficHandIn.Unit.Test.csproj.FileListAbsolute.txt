@@ -1,0 +1,17 @@
+C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\AirTrafficHandIn.Unit.Test.dll
+C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\AirTrafficHandIn.Unit.Test.pdb
+C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\AirTrafficHandIn.exe
+C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\NSubstitute.dll
+C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\NSubstituteAutoMocker.dll
+C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\nunit.framework.dll
+C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\TransponderReceiver.dll
+C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\AirTrafficHandIn.pdb
+C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\AirTrafficHandIn.exe.config
+C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\NSubstitute.xml
+C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\nunit.framework.pdb
+C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\nunit.framework.xml
+C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\obj\Debug\AirTrafficHandIn.Unit.Test.csprojAssemblyReference.cache
+C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\obj\Debug\AirTrafficHandIn.Unit.Test.csproj.CoreCompileInputs.cache
+C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\obj\Debug\AirTrafficHandIn.Unit.Test.csproj.CopyComplete
+C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\obj\Debug\AirTrafficHandIn.Unit.Test.dll
+C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\obj\Debug\AirTrafficHandIn.Unit.Test.pdb
