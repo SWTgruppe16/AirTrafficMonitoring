@@ -61,7 +61,7 @@
     <Compile Include="Airspace.cs" />
     <Compile Include="FileLogger.cs" />
     <Compile Include="AirspaceMonitor.cs" />
-    <Compile Include="ICondition.cs" />
+    <Compile Include="Interfaces\ICondition.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Interfaces\IConditionMonitor.cs" />
     <Compile Include="Interfaces\ISplitter.cs" />

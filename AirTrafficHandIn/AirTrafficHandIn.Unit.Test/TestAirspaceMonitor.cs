@@ -17,7 +17,9 @@ namespace  Dummy {
 
     class Tester {
 
-        public void OnEvent(object o, Args args) {
+        public void OnEvent(object o, Args args)
+
+        {
             // Hvor er listen ?
 
         }
