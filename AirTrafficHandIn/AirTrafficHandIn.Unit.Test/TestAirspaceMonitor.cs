@@ -8,43 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 
-namespace  Dummy {
-
-
-    class Args {
-        public List<int> Items;
-    }
-
-    class Tester {
-
-        public void OnEvent(object o, Args args) {
-            // Hvor er listen ?
-
-        }
-
-    }
-
-    class Monitor {
-
-        public Tester tester = new Tester();
-
-        public void Calc() {
-            var list = new List<int>
-            {
-                1,
-                3
-            };
-            var args = new Args
-            {
-                Items = list
-            };
-            tester.OnEvent(this, args);
-        }
-    }
-
-
-}
-
 namespace AirTrafficHandIn.Unit.Test
 {
     [TestFixture]
