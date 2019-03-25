@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 
+<<<<<<< HEAD
 namespace  Dummy {
 
 
@@ -47,6 +48,8 @@ namespace  Dummy {
 
 }
 
+=======
+>>>>>>> 992bee34c92a0b53c05a3f91c568504022384411
 namespace AirTrafficHandIn.Unit.Test
 {
     [TestFixture]

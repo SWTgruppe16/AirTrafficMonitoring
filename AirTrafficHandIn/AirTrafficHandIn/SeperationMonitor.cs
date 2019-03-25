@@ -9,7 +9,7 @@ using AirTrafficHandIn.Interfaces;
 namespace AirTrafficHandIn
 {
 
-    public class SeperationCondetion : ICondition
+    public class SeperationCondition : ICondition
     {
         public DateTime TimeOfOccurance { get; set;  }
         public List<string> InvolvedTagIds{ get; set; }
@@ -32,7 +32,7 @@ namespace AirTrafficHandIn
             }
         }
 
-        public SeperationCondetion(DateTime datetime, string tag_a, string tag_b)
+        public SeperationCondition(DateTime datetime, string tag_a, string tag_b)
         {
             InvolvedTagIds = new List<string> { tag_a, tag_b };
             TimeOfOccurance = datetime;
@@ -44,7 +44,7 @@ namespace AirTrafficHandIn
         private const double MinimumDistance = 5000.0; //In meters
         private const int MinimumAltitude = 300; //In meters
 
-        private List<SeperationCondetion> currentConditions = new List<SeperationCondetion>();
+        private List<SeperationCondition> currentConditions = new List<SeperationCondition>();
 
 
         public bool IsToClose(Track A, Track B)
@@ -62,9 +62,9 @@ namespace AirTrafficHandIn
 
         
 
-        public List<SeperationCondetion> ListOfConditions(List<Track> tracks)
+        public List<SeperationCondition> ListOfConditions(List<Track> tracks)
         {
-            var seperationOccuredList = new List<SeperationCondetion>();
+            var seperationOccuredList = new List<SeperationCondition>();
 
             for (int i = 0; i < tracks.Count; i++) //For every item in list of tracks:
             {
@@ -77,7 +77,7 @@ namespace AirTrafficHandIn
                     //In case of collision course, adds timestamp and tagID to seperationOccuredList. 
                     if (IsToClose(track_a, track_b))
                     {
-                        var condetion = new SeperationCondetion(track_a.TimeStamp, track_a.TagId, track_b.TagId);
+                        var condetion = new SeperationCondition(track_a.TimeStamp, track_a.TagId, track_b.TagId);
                         seperationOccuredList.Add(condetion);
                     }    
                 }
@@ -99,7 +99,7 @@ namespace AirTrafficHandIn
             return false;
         }
 
-        public void FindNewConditions(List<SeperationCondetion> incomingConditions)
+        public void FindNewConditions(List<SeperationCondition> incomingConditions)
         {
             var newConditions = new NewConditionArgs { Conditions = new List<ICondition>() };
             foreach (var calculatedCondition in incomingConditions)
@@ -116,7 +116,7 @@ namespace AirTrafficHandIn
             }
         }
 
-        public void AddNewConditions(List<SeperationCondetion> incomingConditions)
+        public void AddNewConditions(List<SeperationCondition> incomingConditions)
         {
             foreach (var calculatedCondition in incomingConditions)
             {
