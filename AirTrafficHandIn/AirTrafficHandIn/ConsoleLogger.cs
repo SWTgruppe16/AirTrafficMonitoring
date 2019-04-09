@@ -35,7 +35,7 @@ namespace AirTrafficHandIn
 
         public void LogTrackData(object sender, ICollection<Track> logtracks)
         {
-            //Kalle hjælp
+           
         }
 
         public void clear()
