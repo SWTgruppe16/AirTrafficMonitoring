@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestAirspaceMonitor.cs" />
-    <Compile Include="TestConsoleLogger.cs" />
     <Compile Include="TestSeperation.cs" />
     <Compile Include="TestSplitter.cs" />
     <Compile Include="TestTrackCalculator.cs" />
