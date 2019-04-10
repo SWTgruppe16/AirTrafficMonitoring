@@ -25,26 +25,26 @@ namespace AirTrafficHandIn
             var tracker = new TrackCalculator();
             var airspace_monitor = new AirspaceMonitor(airspace, tracker);
             
-            splitter.newTrack += delegate(object sender, NewTrackArgs trackArgs)
-            {
-                Console.WriteLine("Nyt Track Event\n=====================");
-                foreach (var track in trackArgs.Tracks)
-                {
-                    Console.WriteLine(track);
-                }
-            };
+            //splitter.newTrack += delegate(object sender, NewTrackArgs trackArgs)
+            //{
+            //    Console.WriteLine("Nyt Track Event\n=====================");
+            //    foreach (var track in trackArgs.Tracks)
+            //    {
+            //        Console.WriteLine(track);
+            //    }
+            //};
 
             splitter.newTrack += airspace_monitor.OnTrackRecieved;
 
 
-            airspace_monitor.TracksInAirspaceEvent += delegate(object sender, TracksInAirspaceArgs airspaceArgs)
-            {
-                Console.WriteLine("Current In Airspace");
-                foreach (var track in airspaceArgs.Tracks)
-                {
-                    Console.WriteLine(track);
-                }
-            };
+            //airspace_monitor.TracksInAirspaceEvent += delegate(object sender, TracksInAirspaceArgs airspaceArgs)
+            //{
+            //    Console.WriteLine("Current In Airspace");
+            //    foreach (var track in airspaceArgs.Tracks)
+            //    {
+            //        Console.WriteLine(track);
+            //    }
+            //};
 
             var seperation_moniotr = new SeperationMonitor();
             airspace_monitor.TracksInAirspaceEvent += seperation_moniotr.OnTrackRecieved;

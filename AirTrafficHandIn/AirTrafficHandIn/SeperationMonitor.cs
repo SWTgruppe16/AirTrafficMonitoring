@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace AirTrafficHandIn
 {
-
     public class SeperationCondition : ICondition
     {
         public DateTime TimeOfOccurance { get; set;  }

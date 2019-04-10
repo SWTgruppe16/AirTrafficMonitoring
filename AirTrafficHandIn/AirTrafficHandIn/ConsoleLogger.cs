@@ -35,7 +35,38 @@ namespace AirTrafficHandIn
 
         public void LogTrackData(object sender, ICollection<Track> logtracks)
         {
-           
+           clear();
+
+           if (!trackEnteredString.Equals(string.Empty))
+           {
+               Console.WriteLine(trackEnteredString + "\n");
+           }
+
+           if (!trackSeperation.Equals(string.Empty))
+           {
+               Console.WriteLine(trackSeperation + "\n");
+           }
+
+           var stringBuilder = new StringBuilder();
+
+           if (!logtracks.Any())
+           {
+               throw new ArgumentNullException("List is empty");
+           }
+
+           foreach (var track in logtracks)
+           {
+               Console.WriteLine("Tag ID: "+track.TagId + "\n"
+                                 + $"(X, Y) Coordinates: {track.X},{track.Y}\n" 
+                                 + "Altitude: "+ track.Altitude 
+                                 +"\nVelocity: "+ track.Velocity 
+                                 + "\nCompass Course: "+ track.CompassCourse 
+                                 + " degrees " +
+                                 "\nTimestamp: " + track.TimeStamp +"\n");
+           }
+
+           trackEnteredString = "";
+           trackSeperation = "";
         }
 
         public void clear()
