@@ -12,7 +12,7 @@ namespace AirTrafficHandIn.Unit.Test
 {
     class TestSplitter
     {
-        private Splitter _uut;
+        private ISplitter _uut;
         private List<Track> tracks;
 
         [SetUp]
@@ -30,7 +30,7 @@ namespace AirTrafficHandIn.Unit.Test
             List<string> trackData = new List<string>();
             trackData.Add("HEN207;23550;24500;7500;20190411123156789");
             RawTransponderDataEventArgs RawTestData = new RawTransponderDataEventArgs(trackData);
-            _uut.SplitData(null, RawTestData);
+            _uut.splitData(null, RawTestData);
 
             Assert.That(trackData, Has.Count.EqualTo(1)); //Test that the splitter only split one string array
         }
@@ -51,7 +51,7 @@ namespace AirTrafficHandIn.Unit.Test
                 TimeStamp = DateTime.ParseExact("20190411123156789", "yyyyMMddHHmmssfff", null)
             };
 
-            _uut.SplitData(null, RawTestData);
+            _uut.splitData(null, RawTestData);
 
             foreach (var track in tracks)
             {

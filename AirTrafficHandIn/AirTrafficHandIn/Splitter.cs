@@ -17,13 +17,37 @@ namespace AirTrafficHandIn
     public class Splitter : ISplitter
     {
         private List<Track> tracks;
+
+        public void splitData(object sender, RawTransponderDataEventArgs data)
+        {
+            // Console.WriteLine("Nyt Event\n==============================");
+
+            var newTrackArgs = new NewTrackArgs { Tracks = new List<Track>() };
+
+            foreach (var planeinfo in data.TransponderData)
+            {
+                // Convert planeinfo to track
+                var track = parsePlaneInfo(planeinfo);
+
+                // Adding track to complete list
+                tracks.Add(track);
+
+                // Adding track to event list
+                newTrackArgs.Tracks.Add(track);
+
+            }
+
+            // Send event with the track
+            sendEvent(newTrackArgs);
+        }
+
         public event EventHandler<NewTrackArgs> newTrack;
 
         public Splitter(ITransponderReceiver transponderData)
         {
             tracks = new List<Track>(); //Create list
             newTrack = delegate { };
-            transponderData.TransponderDataReady += SplitData;
+            transponderData.TransponderDataReady += splitData;
         }
 
         protected Track parsePlaneInfo(string planeinfo)
@@ -60,30 +84,7 @@ namespace AirTrafficHandIn
             }
         }
 
-        public void SplitData(object sender, RawTransponderDataEventArgs data)
-        {
-            // Console.WriteLine("Nyt Event\n==============================");
-
-            var newTrackArgs = new NewTrackArgs {Tracks = new List<Track>()};
-
-            foreach (var planeinfo in data.TransponderData)
-            {
-                // Convert planeinfo to track
-                var track = parsePlaneInfo(planeinfo);
-
-                // Adding track to complete list
-                tracks.Add(track);
-
-                // Adding track to event list
-                newTrackArgs.Tracks.Add(track);
-                
-            }
-
-            // Send event with the track
-            sendEvent(newTrackArgs);
-            
-
-        }
+        
 
         //protected virtual void OnNewTrackUpdated(List<Track> tracks)
         //{

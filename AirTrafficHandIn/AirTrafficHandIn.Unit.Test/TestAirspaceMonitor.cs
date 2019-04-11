@@ -403,5 +403,80 @@ namespace AirTrafficHandIn.Unit.Test
             // deregister the event because we are good boys and girls
             uut.TracksInAirspaceEvent -= tracksInAirspaceHandler;
         }
+
+        [Test]
+        public void AirspaceMonitor_IsInside_xyz_greater_than_XYZ_plus_DepthWidthHeight_Test()
+        {
+            // Out uut
+            var airspace = new Airspace
+            {
+                X = 20,
+                Y = 20,
+                Z = 500,
+                depth = 80000,
+                width = 80000,
+                height = 20000
+            };
+
+            var trackCalculator = new TrackCalculator();
+            var uut = new AirspaceMonitor(airspace, trackCalculator);
+
+            // To keep result(s) after the event(s) has fired
+            List<List<Track>> results = new List<List<Track>>(); //Antal lister modtaget med tracks
+
+            // Our test handler
+            // This validates that the events arguments are correct
+            // Here we verify that the event indeed had 42 as expected
+            // And we save the value to results, such that we can verify how many times 
+            // the event fired and they all were correct
+            EventHandler<TracksInAirspaceArgs> tracksInAirspaceHandler = (object sender, TracksInAirspaceArgs e) =>
+            {
+                //int numInList = e.Tracks.Count; // Number of tracks in airspace
+                //Assert.That(numInList, Is.EqualTo(0));
+                var l = new List<Track>(); //Kopi af listen
+                foreach (var t in e.Tracks)
+                {
+                    l.Add(t);
+                }
+                results.Add(l);
+            };
+
+            // Register the test event handler
+            uut.TracksInAirspaceEvent += tracksInAirspaceHandler;
+
+            // Do stuff that trickers event
+            Track outsideTrack_x_greather_than_X_plus_depth = new Track
+            {
+                X = 100000,
+                Y = 100000,
+                Altitude = 40000,
+                TagId = "HEN207"
+            };
+
+            List<Track> tracksOutsideList = new List<Track>
+            {
+                outsideTrack_x_greather_than_X_plus_depth
+            }; // opret liste
+
+
+            NewTrackArgs newTrack = new NewTrackArgs
+            {
+                Tracks = tracksOutsideList  // Putter listen ned i tasken
+            };  // opret taske
+
+
+            uut.OnTrackRecieved(this, newTrack); // Giv tasken til Caro
+ 
+
+            // Verify the amount of events
+            Assert.That(results.Count, Is.EqualTo(1)); // Only one event must be fired in this test
+
+            // and their value(s)
+            Assert.That(results.ElementAt(0).Count, Is.EqualTo(0));
+
+            // deregister the event because we are good boys and girls
+            uut.TracksInAirspaceEvent -= tracksInAirspaceHandler;
+        }
     }
+    
 }

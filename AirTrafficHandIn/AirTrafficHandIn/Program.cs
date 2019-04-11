@@ -20,7 +20,7 @@ namespace AirTrafficHandIn
                 Z = 500,
                 width = 80000,
                 depth = 80000,
-                height = 20000 - 500
+                height = 20000
             };
             var tracker = new TrackCalculator();
             var airspace_monitor = new AirspaceMonitor(airspace, tracker);

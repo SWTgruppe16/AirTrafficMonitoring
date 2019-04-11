@@ -57,6 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestAirspace.cs" />
     <Compile Include="TestAirspaceMonitor.cs" />
     <Compile Include="TestSeperation.cs" />
     <Compile Include="TestSplitter.cs" />
