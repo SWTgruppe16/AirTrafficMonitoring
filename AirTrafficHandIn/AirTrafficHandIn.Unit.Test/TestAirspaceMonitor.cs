@@ -448,31 +448,69 @@ namespace AirTrafficHandIn.Unit.Test
             Track outsideTrack_x_greather_than_X_plus_depth = new Track
             {
                 X = 100000,
-                Y = 100000,
-                Altitude = 40000,
+                Y = 20000,
+                Altitude = 700,
                 TagId = "HEN207"
             };
 
-            List<Track> tracksOutsideList = new List<Track>
+            List<Track> tracksOutsideXList = new List<Track>
             {
                 outsideTrack_x_greather_than_X_plus_depth
             }; // opret liste
 
-
-            NewTrackArgs newTrack = new NewTrackArgs
+            Track outsideTrack_y_greather_than_Y_plus_width = new Track
             {
-                Tracks = tracksOutsideList  // Putter listen ned i tasken
+                X = 20000,
+                Y = 100000,
+                Altitude = 700,
+                TagId = "CAR054"
+            };
+
+            List<Track> tracksOutsideYList = new List<Track>
+            {
+                outsideTrack_y_greather_than_Y_plus_width
+            }; // opret liste
+
+            Track outsideTrack_z_greather_than_Z_plus_height = new Track
+            {
+                X = 20000,
+                Y = 20000,
+                Altitude = 40000,
+                TagId = "BER257"
+            };
+
+            List<Track> tracksOutsideZList = new List<Track>
+            {
+                outsideTrack_z_greather_than_Z_plus_height
+            }; // opret liste
+
+            NewTrackArgs newTrack1 = new NewTrackArgs
+            {
+                Tracks = tracksOutsideXList  // Putter listen ned i tasken
             };  // opret taske
 
+            NewTrackArgs newTrack2 = new NewTrackArgs
+            {
+                Tracks = tracksOutsideYList  // Putter listen ned i tasken
+            };  // opret taske
 
-            uut.OnTrackRecieved(this, newTrack); // Giv tasken til Caro
- 
+            NewTrackArgs newTrack3 = new NewTrackArgs
+            {
+                Tracks = tracksOutsideZList  // Putter listen ned i tasken
+            };  // opret taske
+
+            uut.OnTrackRecieved(this, newTrack1);
+            uut.OnTrackRecieved(this, newTrack2);
+            uut.OnTrackRecieved(this, newTrack3);
 
             // Verify the amount of events
-            Assert.That(results.Count, Is.EqualTo(1)); // Only one event must be fired in this test
+            Assert.That(results.Count, Is.EqualTo(3)); // Only one event must be fired in this test
 
             // and their value(s)
             Assert.That(results.ElementAt(0).Count, Is.EqualTo(0));
+            Assert.That(results.ElementAt(1).Count, Is.EqualTo(0));
+            Assert.That(results.ElementAt(2).Count, Is.EqualTo(0));
+
 
             // deregister the event because we are good boys and girls
             uut.TracksInAirspaceEvent -= tracksInAirspaceHandler;
