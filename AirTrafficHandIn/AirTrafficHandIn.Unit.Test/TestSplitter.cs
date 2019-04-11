@@ -12,22 +12,55 @@ namespace AirTrafficHandIn.Unit.Test
 {
     class TestSplitter
     {
-        private ISplitter _uut;
-        private NewTrackArgs _splitData;
+        private Splitter _uut;
+        private List<Track> tracks;
 
         [SetUp]
         public void Setup()
         {
             ITransponderReceiver transponderReceiver = Substitute.For<ITransponderReceiver>();
             _uut = new Splitter(transponderReceiver);
-            _splitData = new NewTrackArgs();
-            //_uut.newTrack +=
+            tracks = new List<Track>();
         }
 
-        private void SplitDataEvent(object sender, NewTrackArgs e)
+
+        [Test]
+        public void CheckIf_Splitter_OnlySplits_One_String_test()
         {
-            _splitData = e;
+            List<string> trackData = new List<string>();
+            trackData.Add("HEN207;23550;24500;7500;20190411123156789");
+            RawTransponderDataEventArgs RawTestData = new RawTransponderDataEventArgs(trackData);
+            _uut.SplitData(null, RawTestData);
+
+            Assert.That(trackData, Has.Count.EqualTo(1)); //Test that the splitter only split one string array
         }
 
+        [Test]
+        public void SplitData_CheckIf_SplitData_IsCorrect_Test()
+        {
+            List<string> trackData = new List<string>();
+            trackData.Add("CAR054;27450;19500;2500;20190411123156789");
+            RawTransponderDataEventArgs RawTestData = new RawTransponderDataEventArgs(trackData);
+
+            Track correcTrackData = new Track()
+            {
+                TagId = "BER257",
+                X = 74000,
+                Y = 23556,
+                Altitude = 750,
+                TimeStamp = DateTime.ParseExact("20190411123156789", "yyyyMMddHHmmssfff", null)
+            };
+
+            _uut.SplitData(null, RawTestData);
+
+            foreach (var trackssss in tracks)
+            {
+                Assert.That(trackssss.TagId, Is.EqualTo(correcTrackData.TagId));
+                Assert.That(trackssss.X, Is.EqualTo(correcTrackData.X));
+                Assert.That(trackssss.Y, Is.EqualTo(correcTrackData.Y));
+                Assert.That(trackssss.Altitude, Is.EqualTo(correcTrackData.Altitude));
+                Assert.That(DateTime.Compare(trackssss.TimeStamp, correcTrackData.TimeStamp), Is.Zero);
+            }
+        }
     }
 }

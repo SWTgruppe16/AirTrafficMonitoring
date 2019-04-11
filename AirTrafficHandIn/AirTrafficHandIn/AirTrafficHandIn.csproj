@@ -79,7 +79,8 @@
     <Compile Include="ConsoleLogger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SeperationMonitor.cs" />
+    <Compile Include="SeparationCondition.cs" />
+    <Compile Include="SeparationMonitor.cs" />
     <Compile Include="Splitter.cs" />
     <Compile Include="TrackCalculator.cs" />
     <Compile Include="Track.cs" />

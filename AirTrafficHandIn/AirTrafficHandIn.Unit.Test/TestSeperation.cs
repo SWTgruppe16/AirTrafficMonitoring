@@ -16,26 +16,71 @@ namespace AirTrafficHandIn.Unit.Test
     [TestFixture]
     class TestSeperation
     {
-        private SeperationMonitor uut_;
+        private SeparationMonitor uut_;
         private ILogger fakeLogger_;
         private AirspaceMonitor fakeAirspaceMonitor_;
 
         [SetUp]
         public void Setup()
         {
-            fakeLogger_ = Substitute.For<ILogger>();
-            fakeAirspaceMonitor_ = Substitute.For<AirspaceMonitor>();
-            uut_ = new SeperationMonitor();
+     
 
         }
 
-        [Test]
-        public void
-        {
+        //[Test]
+        //public void NoSeparationConditionOccuredTest()
+        //{
+        //    // Out uut
+        //    var airspace = new Airspace
+        //    {
+        //        X = 0,
+        //        Y = 0,
+        //        Z = 500,
+        //        depth = 80000,
+        //        width = 80000,
+        //        height = 20000
+        //    };
 
+        //    var separationCondition = new SeparationCondition(DateTime.Now, "1", "2");
+        //    var uut = new SeparationMonitor();
+
+        //    // To keep result(s) after the event(s) has fired
+        //    List<List<Track>> results = new List<List<Track>>();
+
+        //    // Our test handler
+        //    // This validates that the events arguments are correct
+        //    // Here we verify that the event indeed had as expected
+        //    // And we save the value to results, such that we can verify how many times 
+        //    // the event fired and they all were correct
+        //    EventHandler<TracksInAirspaceArgs> tracksInAirspaceHandler = (object sender, TracksInAirspaceArgs e) =>
+        //    {
+        //        int numInList = e.Tracks.Count; // Number of tracks in airspace
+        //        Assert.That(numInList, Is.EqualTo(0));
+        //        results.Add(e.Tracks);
+        //    };
+
+        //    // Register the test event handler
+        //    uut.TracksInAirspaceEvent += tracksInAirspaceHandler;
+
+        //    // Do stuff that trickers event
+        //    List<Track> tracksEmptyList = new List<Track>(); // opret liste
+        //    // Evt tilføj ting på listen
+        //    NewTrackArgs newTrack = new NewTrackArgs();  // opret taske
+        //    newTrack.Tracks = tracksEmptyList;  // Putter listen ned i tasken
+
+        //    uut.OnTrackRecieved(this, newTrack); // Giv tasken til Caro
+
+        //    // Verify the amount of events
+        //    Assert.That(results.Count, Is.EqualTo(1)); // Only one event must be fired in this test
+
+        //    // and their value(s)
+        //    Assert.That(results.ElementAt(0).Count, Is.EqualTo(0));
+
+        //    // deregister the event because we are good boys and girls
+        //    uut.TracksInAirspaceEvent -= tracksInAirspaceHandler;
         }
 
-    }
+}
     //    public delegate void AnswerHandler(object sender, AnswerEventArgs e);
 
         //    public class AnswerEventArgs : EventArgs
@@ -140,5 +185,3 @@ namespace AirTrafficHandIn.Unit.Test
         //            // deregister the event because we are good boys and girls
         //            uut.AnswerEvent -= handler;
         //        }
-        //    }
-    }

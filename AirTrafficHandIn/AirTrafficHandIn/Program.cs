@@ -46,7 +46,7 @@ namespace AirTrafficHandIn
             //    }
             //};
 
-            var seperation_moniotr = new SeperationMonitor();
+            var seperation_moniotr = new SeparationMonitor();
             airspace_monitor.TracksInAirspaceEvent += seperation_moniotr.OnTrackRecieved;
 
             while (true)

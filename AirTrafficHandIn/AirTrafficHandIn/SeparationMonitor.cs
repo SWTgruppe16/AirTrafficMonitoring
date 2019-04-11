@@ -4,45 +4,27 @@ using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace AirTrafficHandIn
 {
-    public class SeperationCondition : ICondition
+    public class NewCondition : EventArgs
     {
-        public DateTime TimeOfOccurance { get; set;  }
-        public List<string> InvolvedTagIds{ get; set; }
-        public string TypeOfCondition { get => "seperation"; }
-
-        public string ID
-        {
-            get
-            {
-                var a = InvolvedTagIds[0];
-                var b = InvolvedTagIds[1];
-                if (a.CompareTo(b) > 0)
-                {
-                    var tmp = a;
-                    a = b;
-                    b = tmp;
-                }
-
-                return a + b;
-            }
-        }
-
-        public SeperationCondition(DateTime datetime, string tag_a, string tag_b)
-        {
-            InvolvedTagIds = new List<string> { tag_a, tag_b };
-            TimeOfOccurance = datetime;
-        }
+        public List<SeparationMonitor> NewSeparationConditionList { get; set; }
     }
 
-    public class SeperationMonitor : IConditionMonitor
+    public class CurrentConditions : EventArgs
+    {
+        public List<SeparationMonitor> CurrentSeparationsList { get; set; }
+    }
+
+    public class SeparationMonitor : IConditionMonitor
     {
         private const double MinimumDistance = 5000.0; //In meters
         private const int MinimumAltitude = 300; //In meters
-
-        private List<SeperationCondition> currentConditions = new List<SeperationCondition>();
+        public event EventHandler<NewConditionArgs> newConditionsEvent;
+        public event EventHandler<CurrentConditionArgs> currentConditionsEvent;
+        private List<SeparationCondition> currentConditions = new List<SeparationCondition>();
 
 
         public bool IsToClose(Track A, Track B)
@@ -60,9 +42,9 @@ namespace AirTrafficHandIn
 
         
 
-        public List<SeperationCondition> ListOfConditions(List<Track> tracks)
+        public List<SeparationCondition> ListOfConditions(List<Track> tracks)
         {
-            var seperationOccuredList = new List<SeperationCondition>();
+            var seperationOccuredList = new List<SeparationCondition>();
 
             for (int i = 0; i < tracks.Count; i++) //For every item in list of tracks:
             {
@@ -75,7 +57,7 @@ namespace AirTrafficHandIn
                     //In case of collision course, adds timestamp and tagID to seperationOccuredList. 
                     if (IsToClose(track_a, track_b))
                     {
-                        var condetion = new SeperationCondition(track_a.TimeStamp, track_a.TagId, track_b.TagId);
+                        var condetion = new SeparationCondition(track_a.TimeStamp, track_a.TagId, track_b.TagId);
                         seperationOccuredList.Add(condetion);
                     }    
                 }
@@ -97,7 +79,7 @@ namespace AirTrafficHandIn
             return false;
         }
 
-        public void FindNewConditions(List<SeperationCondition> incomingConditions)
+        public void FindNewConditions(List<SeparationCondition> incomingConditions)
         {
             var newConditions = new NewConditionArgs { Conditions = new List<ICondition>() };
             foreach (var calculatedCondition in incomingConditions)
@@ -114,15 +96,16 @@ namespace AirTrafficHandIn
             }
         }
 
-        public void AddNewConditions(List<SeperationCondition> incomingConditions)
+        public void AddNewConditions(List<SeparationCondition> incomingConditions)
         {
             foreach (var calculatedCondition in incomingConditions)
             {
                 if (IsCurrentInCondition(calculatedCondition.ID))
                 {
-                    //Remove old condition
+                    currentConditions.Remove(calculatedCondition);
                 } 
-                // Add new condition
+                
+                currentConditions.Add(calculatedCondition);
             }
 
             // Raise event with all current
@@ -138,7 +121,7 @@ namespace AirTrafficHandIn
 
         }
 
-        public event EventHandler<NewConditionArgs> newConditionsEvent = delegate { };
-        public event EventHandler<CurrentConditionArgs> currentConditionsEvent = delegate{};
+        
+        
     }
 }
