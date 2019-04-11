@@ -53,13 +53,13 @@ namespace AirTrafficHandIn.Unit.Test
 
             _uut.SplitData(null, RawTestData);
 
-            foreach (var trackssss in tracks)
+            foreach (var track in tracks)
             {
-                Assert.That(trackssss.TagId, Is.EqualTo(correcTrackData.TagId));
-                Assert.That(trackssss.X, Is.EqualTo(correcTrackData.X));
-                Assert.That(trackssss.Y, Is.EqualTo(correcTrackData.Y));
-                Assert.That(trackssss.Altitude, Is.EqualTo(correcTrackData.Altitude));
-                Assert.That(DateTime.Compare(trackssss.TimeStamp, correcTrackData.TimeStamp), Is.Zero);
+                Assert.That(track.TagId, Is.EqualTo(correcTrackData.TagId));
+                Assert.That(track.X, Is.EqualTo(correcTrackData.X));
+                Assert.That(track.Y, Is.EqualTo(correcTrackData.Y));
+                Assert.That(track.Altitude, Is.EqualTo(correcTrackData.Altitude));
+                Assert.That(DateTime.Compare(track.TimeStamp, correcTrackData.TimeStamp), Is.Zero);
             }
         }
     }
