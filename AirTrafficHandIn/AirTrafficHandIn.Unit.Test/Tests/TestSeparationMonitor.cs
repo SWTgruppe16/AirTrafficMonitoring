@@ -13,7 +13,7 @@ namespace AirTrafficHandIn.Unit.Test.Tests
         private SeparationMonitor _uut;
         //private CurrentConditions _currentConditions;
         //private NewCondition _newCondition;
-        //private List<SeparationMonitor> separationMonitors;
+        private List<SeparationMonitor> separationMonitors;
 
         [SetUp]
         public void Setup()
@@ -46,11 +46,11 @@ namespace AirTrafficHandIn.Unit.Test.Tests
         [TestCase(0, 0, 100, 1256, 62124, 600)]
         [TestCase(0, 0, 100, 4000, 4000, 200)]
         public void SeparationEvents_TracksNotCloseEnough_ResultIsNoSeparation(
-            int trackX1, int trackY1, int trackZ1,
-            int trackX2, int trackY2, int trackZ2)
-        {            var tracksNoSeparationList = createTestTracksList(trackX1, trackY1, trackZ1, trackX2, trackY2, trackZ2);
+           int trackX1, int trackY1, int trackZ1,
+           int trackX2, int trackY2, int trackZ2)
+        {
+            var tracksNoSeparationList = createTestTracksList (trackX1, trackY1, trackZ1, trackX2, trackY2, trackZ2);
             Assert.That(_uut.ListOfConditions(tracksNoSeparationList), Is.Empty);
         }
     }
 }
-
