@@ -16,7 +16,8 @@ namespace AirTrafficHandIn.Unit.Test
     [TestFixture]
     class TestSeperation
     {
-        private SeparationMonitor uut_;
+        private SeparationMonitor uut;
+        private ILogger fakeLogger_;
         private AirspaceMonitor fakeAirspaceMonitor_;
 
         [SetUp]
@@ -41,7 +42,7 @@ namespace AirTrafficHandIn.Unit.Test
             };
 
             var separationCondition = new SeparationCondition(DateTime.Now, "1", "2");
-            var uut_ = new SeparationMonitor();
+            var uut = new SeparationMonitor();
 
             // To keep result(s) after the event(s) has fired
             List<List<Track>> results = new List<List<Track>>();
@@ -60,25 +61,25 @@ namespace AirTrafficHandIn.Unit.Test
 
 
 
-            //    // Register the test event handler
-            //    uut.TracksInAirspaceEvent += tracksInAirspaceHandler;
+            // Register the test event handler
+            uut.TracksInAirspaceEvent += tracksInAirspaceHandler;
 
-            //    // Do stuff that trickers event
-            //    List<Track> tracksEmptyList = new List<Track>(); // opret liste
-            //    // Evt tilføj ting på listen
-            //    NewTrackArgs newTrack = new NewTrackArgs();  // opret taske
-            //    newTrack.Tracks = tracksEmptyList;  // Putter listen ned i tasken
+            // Do stuff that trickers event
+            List<Track> tracksEmptyList = new List<Track>(); // opret liste
+                                                             // Evt tilføj ting på listen
+            NewTrackArgs newTrack = new NewTrackArgs();  // opret taske
+            newTrack.Tracks = tracksEmptyList;  // Putter listen ned i tasken
 
-            //    uut.OnTrackRecieved(this, newTrack); // Giv tasken til Caro
+            uut.OnTrackRecieved (this, newTrack, ); // Giv tasken til Caro
 
-            //    // Verify the amount of events
-            //    Assert.That(results.Count, Is.EqualTo(1)); // Only one event must be fired in this test
+            // Verify the amount of events
+            Assert.That(results.Count, Is.EqualTo(1)); // Only one event must be fired in this test
 
-            //    // and their value(s)
-            //    Assert.That(results.ElementAt(0).Count, Is.EqualTo(0));
+            // and their value(s)
+            Assert.That(results.ElementAt(0).Count, Is.EqualTo(0));
 
-            //    // deregister the event because we are good boys and girls
-            //    uut.TracksInAirspaceEvent -= tracksInAirspaceHandler;
+            // deregister the event because we are good boys and girls
+            uut.TracksInAirspaceEvent -= tracksInAirspaceHandler;
         }
     }
 }

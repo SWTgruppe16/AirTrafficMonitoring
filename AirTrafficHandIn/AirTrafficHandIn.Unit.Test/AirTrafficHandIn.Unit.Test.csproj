@@ -61,7 +61,6 @@
     <Compile Include="Tests\TestAirspaceMonitor.cs" />
     <Compile Include="Tests\TestSeparationMonitor.cs" />
     <Compile Include="Tests\TestNewConditions.cs" />
-    <Compile Include="Tests\TestSeparationMonitorTests.cs" />
     <Compile Include="Tests\TestSeperation.cs" />
     <Compile Include="Tests\TestSplitter.cs" />
     <Compile Include="Tests\TestTrackCalculator.cs" />

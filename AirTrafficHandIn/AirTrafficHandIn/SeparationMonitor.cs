@@ -21,6 +21,7 @@ namespace AirTrafficHandIn
         public event EventHandler<CurrentConditionArgs> currentConditionsEvent;
         private List<SeparationCondition> currentConditions = new List<SeparationCondition>();
 
+        public EventHandler<TracksInAirspaceArgs> TracksInAirspaceEvent { get; set; }
 
         public bool IsToClose(Track A, Track B)
         {
@@ -59,6 +60,11 @@ namespace AirTrafficHandIn
             }
 
             return seperationOccuredList;
+        }
+
+        public void OnTrackRecieved(AirTrafficHandIn.Unit.Test.TestSeperation testSeperation, NewTrackArgs newTrack)
+        {
+            throw new NotImplementedException();
         }
 
         public bool IsCurrentInCondition(string ID)

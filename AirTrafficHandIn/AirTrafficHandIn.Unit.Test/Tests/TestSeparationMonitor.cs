@@ -43,14 +43,14 @@ namespace AirTrafficHandIn.Unit.Test.Tests
             };
         }
 
-        //[TestCase(0, 0, 100, 1256, 62124, 600)]
-        //[TestCase(0, 0, 100, 4000, 4000, 200)]
-        //public void SeparationEvents_TracksNotCloseEnough_ResultIsNoSeparation(
-        //   int trackX1, int trackY1, int trackZ1,
-        //   int trackX2, int trackY2, int trackZ2)
-        //{
-        //    var tracksNoSeparationList = createTestTracksList (trackX1, trackY1, trackZ1, trackX2, trackY2, trackZ2);
-        //    Assert.That(_uut.ListOfConditions(tracksNoSeparationList), Is.Empty);
-        //}
+        [TestCase(0, 0, 100, 1256, 62124, 600)]
+        [TestCase(0, 0, 100, 4000, 4000, 200)]
+        public void SeparationEvents_TracksNotCloseEnough_ResultIsNoSeparation(
+           int trackX1, int trackY1, int trackZ1,
+           int trackX2, int trackY2, int trackZ2)
+        {
+            var tracksNoSeparationList = createTestTracksList (trackX1, trackY1, trackZ1, trackX2, trackY2, trackZ2);
+            Assert.That(_uut.ListOfConditions(tracksNoSeparationList), Is.Empty);
+        }
     }
 }
