@@ -12,7 +12,7 @@ namespace AirTrafficHandIn.Unit.Test.Tests
         private SeparationMonitor _uut;
         private CurrentConditions _currentConditions;
         private NewCondition _newCondition;
-        private List<SeparationMonitor> separationMonitors;
+        //private List<SeparationMonitor> separationMonitors;
 
         [SetUp]
         public void Setup()
@@ -21,6 +21,11 @@ namespace AirTrafficHandIn.Unit.Test.Tests
             _uut = new SeparationMonitor();
 
         }
-        
+
+        private List<Track> createTestTracksList(int trackX1, int trackY1, int trackZ1, int trackX2, int trackY2,
+            int trackZ2)
+        {
+
+        }
     }
 }
