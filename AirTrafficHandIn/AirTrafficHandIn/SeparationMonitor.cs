@@ -9,6 +9,10 @@ using NUnit.Framework;
 namespace AirTrafficHandIn
 {
 
+    public class CurrentConditions : EventArgs
+    {
+        public List<SeparationMonitor> CurrentSeparationsList { get; set; }
+    }
     public class SeparationMonitor : IConditionMonitor
     {
         private const double MinimumDistance = 5000.0; //In meters
