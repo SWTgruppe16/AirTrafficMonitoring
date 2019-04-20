@@ -68,15 +68,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Airspace.cs" />
-    <Compile Include="FileLogger.cs" />
-    <Compile Include="AirspaceMonitor.cs" />
-    <Compile Include="ICondition.cs" />
+    <Compile Include="Airspace\Airspace.cs" />
+    <Compile Include="Conditions\CurrentConditions.cs" />
+    <Compile Include="Loggers\FileLogger.cs" />
+    <Compile Include="Airspace\AirspaceMonitor.cs" />
+    <Compile Include="Interfaces\ICondition.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Interfaces\IConditionMonitor.cs" />
     <Compile Include="Interfaces\ISplitter.cs" />
     <Compile Include="Interfaces\ITrack.cs" />
-    <Compile Include="ConsoleLogger.cs" />
+    <Compile Include="Loggers\ConsoleLogger.cs" />
+    <Compile Include="Conditions\NewCondition.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeparationCondition.cs" />

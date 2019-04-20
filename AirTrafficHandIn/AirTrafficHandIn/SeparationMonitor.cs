@@ -8,15 +8,6 @@ using NUnit.Framework;
 
 namespace AirTrafficHandIn
 {
-    public class NewCondition : EventArgs
-    {
-        public List<SeparationMonitor> NewSeparationConditionList { get; set; }
-    }
-
-    public class CurrentConditions : EventArgs
-    {
-        public List<SeparationMonitor> CurrentSeparationsList { get; set; }
-    }
 
     public class SeparationMonitor : IConditionMonitor
     {

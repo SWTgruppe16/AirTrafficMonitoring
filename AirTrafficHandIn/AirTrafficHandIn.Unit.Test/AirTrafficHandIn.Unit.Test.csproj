@@ -57,13 +57,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestAirspace.cs" />
-    <Compile Include="TestAirspaceMonitor.cs" />
-    <Compile Include="TestSeperation.cs" />
-    <Compile Include="TestSplitter.cs" />
-    <Compile Include="TestTrackCalculator.cs" />
+    <Compile Include="Tests\TestAirspace.cs" />
+    <Compile Include="Tests\TestAirspaceMonitor.cs" />
+    <Compile Include="Tests\TestSeperation.cs" />
+    <Compile Include="Tests\TestSplitter.cs" />
+    <Compile Include="Tests\TestTrackCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestTransponderReciever.cs" />
+    <Compile Include="Tests\TestTransponderReciever.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

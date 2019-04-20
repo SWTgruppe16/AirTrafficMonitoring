@@ -59,6 +59,8 @@ namespace AirTrafficHandIn.Unit.Test
                 results.Add(e.Tracks);
             };
 
+
+
             //    // Register the test event handler
             //    uut.TracksInAirspaceEvent += tracksInAirspaceHandler;
 
