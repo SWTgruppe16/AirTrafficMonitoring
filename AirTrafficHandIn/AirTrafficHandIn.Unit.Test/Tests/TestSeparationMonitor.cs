@@ -13,7 +13,7 @@ namespace AirTrafficHandIn.Unit.Test.Tests
         private SeparationMonitor _uut;
         //private CurrentConditions _currentConditions;
         //private NewCondition _newCondition;
-        private List<SeparationMonitor> separationMonitors;
+        //private List<SeparationMonitor> separationMonitors;
 
         [SetUp]
         public void Setup()

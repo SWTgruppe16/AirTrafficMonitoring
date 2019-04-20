@@ -17,7 +17,6 @@ namespace AirTrafficHandIn.Unit.Test
     class TestSeperation
     {
         private SeparationMonitor uut_;
-        private ILogger fakeLogger_;
         private AirspaceMonitor fakeAirspaceMonitor_;
 
         [SetUp]
@@ -42,7 +41,7 @@ namespace AirTrafficHandIn.Unit.Test
             };
 
             var separationCondition = new SeparationCondition(DateTime.Now, "1", "2");
-            var uut = new SeparationMonitor();
+            var uut_ = new SeparationMonitor();
 
             // To keep result(s) after the event(s) has fired
             List<List<Track>> results = new List<List<Track>>();
