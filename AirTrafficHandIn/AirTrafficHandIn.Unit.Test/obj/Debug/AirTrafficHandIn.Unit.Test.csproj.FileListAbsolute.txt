@@ -17,13 +17,11 @@ C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\Ai
 C:\Users\carol\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\obj\Debug\AirTrafficHandIn.Unit.Test.pdb
 C:\Users\henri\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\AirTrafficHandIn.Unit.Test.dll
 C:\Users\henri\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\AirTrafficHandIn.Unit.Test.pdb
-C:\Users\henri\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\AirTrafficHandIn.exe
 C:\Users\henri\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\NSubstitute.dll
 C:\Users\henri\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\NSubstituteAutoMocker.dll
 C:\Users\henri\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\nunit.framework.dll
 C:\Users\henri\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\TransponderReceiver.dll
 C:\Users\henri\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\AirTrafficHandIn.pdb
-C:\Users\henri\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\AirTrafficHandIn.exe.config
 C:\Users\henri\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\NSubstitute.xml
 C:\Users\henri\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\nunit.framework.pdb
 C:\Users\henri\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\nunit.framework.xml
@@ -36,3 +34,5 @@ C:\Users\henri\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\Ai
 C:\Users\henri\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\NUnit3.TestAdapter.pdb
 C:\Users\henri\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\nunit.engine.dll
 C:\Users\henri\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\nunit.engine.api.dll
+C:\Users\henri\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\AirTrafficHandIn.dll
+C:\Users\henri\Source\Repos\SWTgruppe16\AirTrafficMonitoring\AirTrafficHandIn\AirTrafficHandIn.Unit.Test\bin\Debug\AirTrafficHandIn.dll.config
