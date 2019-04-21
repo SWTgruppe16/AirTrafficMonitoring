@@ -12,13 +12,13 @@ namespace AirTrafficHandIn
     
     public class SeparationMonitor : IConditionMonitor
     {
+
+        public event EventHandler<NewConditionArgs> NewConditionsEvent;
+        public event EventHandler<CurrentConditionArgs> CurrentConditionsEvent;
+
         private const double MinimumDistance = 5000.0; //In meters
         private const int MinimumAltitude = 300; //In meters
-        public event EventHandler<NewConditionArgs> newConditionsEvent;
-        public event EventHandler<CurrentConditionArgs> currentConditionsEvent;
         private List<SeparationCondition> currentConditions = new List<SeparationCondition>();
-
-        public EventHandler<TracksInAirspaceArgs> TracksInAirspaceEvent { get; set; }
 
         public bool IsToClose(Track A, Track B)
         {
@@ -85,7 +85,7 @@ namespace AirTrafficHandIn
 
             if (newConditions.Conditions.Count > 0)
             {
-                newConditionsEvent(this, newConditions);
+                NewConditionsEvent(this, newConditions);
             }
         }
 

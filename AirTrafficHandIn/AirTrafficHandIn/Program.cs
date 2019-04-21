@@ -12,7 +12,9 @@ namespace AirTrafficHandIn
         static void Main(string[] args)
         {
             var transponderReceiver = TransponderReceiver.TransponderReceiverFactory.CreateTransponderDataReceiver();
-            var splitter = new Splitter(transponderReceiver);
+            var splitter = new Splitter();
+            transponderReceiver.TransponderDataReady += splitter.OnTransponderData;
+
             var airspace = new Airspace
             {
                 X = 0,
@@ -34,7 +36,7 @@ namespace AirTrafficHandIn
             //    }
             //};
 
-            splitter.newTrack += airspace_monitor.OnTrackRecieved;
+            splitter.NewTracks += airspace_monitor.OnTrackRecieved;
 
 
             //airspace_monitor.TracksInAirspaceEvent += delegate(object sender, TracksInAirspaceArgs airspaceArgs)

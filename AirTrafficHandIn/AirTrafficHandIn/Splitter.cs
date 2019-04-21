@@ -16,15 +16,32 @@ namespace AirTrafficHandIn
 
     public class Splitter : ISplitter
     {
-        private List<Track> tracks;
+        private readonly List<Track> tracks = new List<Track>();
+        public event EventHandler<NewTrackArgs> NewTracks = delegate { };
 
-        public void splitData(object sender, RawTransponderDataEventArgs data)
+        public Splitter() { }
+
+        public void OnTransponderData(object sender, RawTransponderDataEventArgs data)
+        {
+            // Split tracks
+            var tracks = SplitData(data.TransponderData);
+
+            // Put tracks i wrapper
+            var newTrackArgs = new NewTrackArgs {
+                Tracks = tracks
+            };
+
+            // Send Event
+            NewTracks?.Invoke(this, newTrackArgs);
+        }
+
+        public List<Track> SplitData(List<string> planeinfos)
         {
             // Console.WriteLine("Nyt Event\n==============================");
 
-            var newTrackArgs = new NewTrackArgs { Tracks = new List<Track>() };
+            var tracks = new List<Track>();
 
-            foreach (var planeinfo in data.TransponderData)
+            foreach (var planeinfo in planeinfos)
             {
                 // Convert planeinfo to track
                 var track = parsePlaneInfo(planeinfo);
@@ -33,22 +50,16 @@ namespace AirTrafficHandIn
                 tracks.Add(track);
 
                 // Adding track to event list
-                newTrackArgs.Tracks.Add(track);
+                tracks.Add(track);
 
             }
 
-            // Send event with the track
-            sendEvent(newTrackArgs);
+            return tracks;
         }
 
-        public event EventHandler<NewTrackArgs> newTrack;
+        
 
-        public Splitter(ITransponderReceiver transponderData)
-        {
-            tracks = new List<Track>(); //Create list
-            newTrack = delegate { };
-            transponderData.TransponderDataReady += splitData;
-        }
+        
 
         protected Track parsePlaneInfo(string planeinfo)
         {
@@ -78,9 +89,9 @@ namespace AirTrafficHandIn
 
         protected void sendEvent(NewTrackArgs args)
         {
-            if (newTrack != null)
+            if (NewTracks != null)
             {
-                newTrack(this, args);
+                NewTracks(this, args);
             }
         }
 

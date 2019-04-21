@@ -18,7 +18,8 @@ namespace AirTrafficHandIn
 
     public interface IConditionMonitor
     {
-        event EventHandler<NewConditionArgs> newConditionsEvent;
-        event EventHandler<CurrentConditionArgs> currentConditionsEvent;
+        event EventHandler<NewConditionArgs> NewConditionsEvent;
+        event EventHandler<CurrentConditionArgs> CurrentConditionsEvent;
+        void OnTrackRecieved(object sender, TracksInAirspaceArgs tracksInAirspaceArgs);
     }
 }

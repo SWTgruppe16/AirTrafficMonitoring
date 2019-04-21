@@ -9,7 +9,7 @@ namespace AirTrafficHandIn.Interfaces
 {
     public interface ISplitter
     {
-        void splitData(object sender, RawTransponderDataEventArgs data);
-        event EventHandler<NewTrackArgs> newTrack;
+        void OnTransponderData(object sender, RawTransponderDataEventArgs data);
+        event EventHandler<NewTrackArgs> NewTracks;
     }
 }
