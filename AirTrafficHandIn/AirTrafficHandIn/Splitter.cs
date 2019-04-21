@@ -32,7 +32,7 @@ namespace AirTrafficHandIn
             };
 
             // Send Event
-            NewTracks?.Invoke(this, newTrackArgs);
+            sendEvent(newTrackArgs);
         }
 
         public List<Track> SplitData(List<string> planeinfos)
