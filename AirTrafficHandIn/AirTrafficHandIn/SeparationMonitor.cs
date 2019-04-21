@@ -9,10 +9,7 @@ using NUnit.Framework;
 namespace AirTrafficHandIn
 {
 
-    public class CurrentConditions : EventArgs
-    {
-        public List<SeparationMonitor> CurrentSeparationsList { get; set; }
-    }
+    
     public class SeparationMonitor : IConditionMonitor
     {
         private const double MinimumDistance = 5000.0; //In meters
@@ -40,7 +37,7 @@ namespace AirTrafficHandIn
 
         public List<SeparationCondition> ListOfConditions(List<Track> tracks)
         {
-            var seperationOccuredList = new List<SeparationCondition>();
+            var separationConditionsList = new List<SeparationCondition>();
 
             for (int i = 0; i < tracks.Count; i++) //For every item in list of tracks:
             {
@@ -53,19 +50,14 @@ namespace AirTrafficHandIn
                     //In case of collision course, adds timestamp and tagID to seperationOccuredList. 
                     if (IsToClose(track_a, track_b))
                     {
-                        var condetion = new SeparationCondition(track_a.TimeStamp, track_a.TagId, track_b.TagId);
-                        seperationOccuredList.Add(condetion);
+                        var condition = new SeparationCondition(track_a.TimeStamp, track_a.TagId, track_b.TagId);
+                        separationConditionsList.Add(condition);
                     }    
                 }
             }
-
-            return seperationOccuredList;
+            return separationConditionsList;
         }
-
-        public void OnTrackRecieved(AirTrafficHandIn.Unit.Test.TestSeperation testSeperation, NewTrackArgs newTrack)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public bool IsCurrentInCondition(string ID)
         {

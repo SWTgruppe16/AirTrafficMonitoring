@@ -17,7 +17,6 @@ namespace AirTrafficHandIn.Unit.Test
     class TestSeperation
     {
         private SeparationMonitor uut;
-        private ILogger fakeLogger_;
         private AirspaceMonitor fakeAirspaceMonitor_;
 
         [SetUp]
@@ -70,7 +69,7 @@ namespace AirTrafficHandIn.Unit.Test
             NewTrackArgs newTrack = new NewTrackArgs();  // opret taske
             newTrack.Tracks = tracksEmptyList;  // Putter listen ned i tasken
 
-            uut.OnTrackRecieved (this, newTrack, ); // Giv tasken til Caro
+            uut.OnTrackRecieved (this, newTrack); // Giv tasken til Caro
 
             // Verify the amount of events
             Assert.That(results.Count, Is.EqualTo(1)); // Only one event must be fired in this test
