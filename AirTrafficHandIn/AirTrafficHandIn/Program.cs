@@ -11,6 +11,7 @@ namespace AirTrafficHandIn
     [ExcludeFromCodeCoverage]
     class Program
     {
+        [ExcludeFromCodeCoverage]
         static void Main(string[] args)
         {
             var transponderReceiver = TransponderReceiver.TransponderReceiverFactory.CreateTransponderDataReceiver();
