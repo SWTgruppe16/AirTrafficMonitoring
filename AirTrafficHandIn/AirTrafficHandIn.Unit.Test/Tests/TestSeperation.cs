@@ -8,9 +8,6 @@ using NSubstitute;
 using NUnit.Framework;
 
 
-
-
-
 namespace AirTrafficHandIn.Unit.Test
 {
     [TestFixture]
@@ -257,6 +254,78 @@ namespace AirTrafficHandIn.Unit.Test
             Assert.That(results.Count, Is.EqualTo(1)); // 1 events should be fired if 1 condition is met
 
         }
+
+        [Test]
+        public void IsNoLongereACondition_ConditionRemoved()
+        {
+            // To keep result(s) after the event(s) has fired
+            var results = new List<List<ICondition>>();
+
+            // Our test handler
+            // This validates that the events arguments are correct
+            // Here we verify that the event indeed had as expected
+            // And we save the value to results, such that we can verify how many times 
+            // the event fired and they all were correct
+            EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
+            {
+                results.Remove(e.Conditions);
+            };
+            // Register the test event handler
+
+            // Do stuff that trickers event
+            var tracks = new List<Track>
+            {
+                new Track
+                {
+                    TagId = "HEN123",
+                    Altitude = 10,
+                    X = 10,
+                    Y = 10
+                },
+                new Track
+                {
+                    TagId = "HEN321",
+                    Altitude = 10,
+                    X = 10,
+                    Y = 10
+                },
+                new Track
+                {
+                    TagId = "HEN123",
+                    Altitude = 1000,
+                    X = 1000,
+                    Y = 1000
+                },
+                new Track
+                {
+                    TagId = "HEN321",
+                    Altitude = 10,
+                    X = 10,
+                    Y = 10
+                },
+
+            };// opret liste
+
+            var tracksInAirspaceArgs = new TracksInAirspaceArgs
+            {
+                Tracks = tracks  // Putter listen ned i tasken
+            };  // opret taske
+
+            uut.NewConditionsEvent += tracksInAirspaceHandler;
+
+            uut.OnTrackRecieved(this, tracksInAirspaceArgs); // Giv tasken til Caro
+
+            // deregister the event because we are good boys and girls
+            uut.NewConditionsEvent -= tracksInAirspaceHandler;
+
+
+            // Verify the amount of events
+            Assert.That(results.Count, Is.EqualTo(1)); // 1 events should be fired if 1 condition is met
+
+
+
+        }
+
 
     }
     
