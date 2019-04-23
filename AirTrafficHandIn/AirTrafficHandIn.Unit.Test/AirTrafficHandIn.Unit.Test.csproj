@@ -60,7 +60,6 @@
   <ItemGroup>
     <Compile Include="Tests\TestAirspace.cs" />
     <Compile Include="Tests\TestAirspaceMonitor.cs" />
-    <Compile Include="Tests\TestNewConditions.cs" />
     <Compile Include="Tests\TestSeperation.cs" />
     <Compile Include="Tests\TestSplitter.cs" />
     <Compile Include="Tests\TestTrackCalculator.cs" />

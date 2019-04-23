@@ -29,6 +29,7 @@ namespace AirTrafficHandIn.Unit.Test
         public void CheckIf_Splitter_OnlySplits_One_String_test()
         {
             // Create track data
+
             var trackData = new List<string>
             {
                 "HEN207;23550;24500;7500;20190411123156789"
