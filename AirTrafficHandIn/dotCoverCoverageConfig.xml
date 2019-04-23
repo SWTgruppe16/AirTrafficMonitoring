@@ -20,12 +20,12 @@
         <FunctionMask>*</FunctionMask>
       </FilterEntry>
       <FilterEntry>
-        <ModuleMask>AirTrafficMonitoring</ModuleMask>
+        <ModuleMask>*</ModuleMask>
         <ClassMask>ConsoleLogger</ClassMask>
         <FunctionsMask>*</FunctionsMask>
       </FilterEntry>
       <FilterEntry>
-        <ModuleMask>AirTrafficHandin</ModuleMask>
+        <ModuleMask>*</ModuleMask>
         <ClassMask>FileLogger</ClassMask>
         <FunctionsMask>*</FunctionsMask>
       </FilterEntry>
