@@ -320,7 +320,7 @@ namespace AirTrafficHandIn.Unit.Test
 
 
             // Verify the amount of events
-            Assert.That(results.Count, Is.EqualTo(1)); // 1 events should be fired if 1 condition is met
+            Assert.That(results.Count, Is.EqualTo(0)); // 1 events should be fired if 1 condition is met
 
 
 
