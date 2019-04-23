@@ -14,12 +14,12 @@ namespace AirTrafficHandIn.Unit.Test
     class TestSeperation
     {
         private IConditionMonitor uut;
-        private AirspaceMonitor fakeAirspaceMonitor_;
+        //private AirspaceMonitor fakeAirspaceMonitor_;
 
         [SetUp]
         public void Setup()
         {
-            this.uut = new SeparationMonitor();
+            uut = new SeparationMonitor();
         }
 
         [Test]
