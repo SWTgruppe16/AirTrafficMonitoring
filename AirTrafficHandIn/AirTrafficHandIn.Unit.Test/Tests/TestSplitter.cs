@@ -54,7 +54,7 @@ namespace AirTrafficHandIn.Unit.Test
 
             var RawTestData = new RawTransponderDataEventArgs(trackData);
 
-            Track correcTrackData = new Track()
+            Track TrackData1 = new Track()
             {
                 TagId = "BER257",
                 X = 74000,
@@ -63,15 +63,88 @@ namespace AirTrafficHandIn.Unit.Test
                 TimeStamp = DateTime.ParseExact("20190411123156789", "yyyyMMddHHmmssfff", null)
             };
 
+            Track correctTrackData = new Track()
+            {
+                TagId = "BER257",
+                X = 74000,
+                Y = 23556,
+                Altitude = 750,
+                TimeStamp = DateTime.ParseExact("20190411123156789", "yyyyMMddHHmmssfff", null)
+            };
+
+            tracks.Add(TrackData1);
+
             _uut.OnTransponderData(null, RawTestData);
 
             foreach (var track in tracks)
             {
-                Assert.That(track.TagId, Is.EqualTo(correcTrackData.TagId));
-                Assert.That(track.X, Is.EqualTo(correcTrackData.X));
-                Assert.That(track.Y, Is.EqualTo(correcTrackData.Y));
-                Assert.That(track.Altitude, Is.EqualTo(correcTrackData.Altitude));
-                Assert.That(DateTime.Compare(track.TimeStamp, correcTrackData.TimeStamp), Is.Zero);
+                Assert.That(track.TagId, Is.EqualTo(correctTrackData.TagId));
+                Assert.That(track.X, Is.EqualTo(correctTrackData.X));
+                Assert.That(track.Y, Is.EqualTo(correctTrackData.Y));
+                Assert.That(track.Altitude, Is.EqualTo(correctTrackData.Altitude));
+                Assert.That(DateTime.Compare(track.TimeStamp, correctTrackData.TimeStamp), Is.Zero);
+            }
+        }
+
+        [Test]
+        public void SplitData_CheckIf_SplitData_IsCorrect_Test2()
+        {
+            var trackData = new List<string>
+            {
+                "CAR054;27450;19500;2500;20190411123156789"
+            };
+
+            var RawTestData = new RawTransponderDataEventArgs(trackData);
+
+            Track TrackData1 = new Track()
+            {
+                TagId = "BER123",
+                X = 75000,
+                Y = 24556,
+                Altitude = 740,
+                TimeStamp = DateTime.ParseExact("20160411123156789", "yyyyMMddHHmmssfff", null)
+            };
+
+            Track TrackData2 = new Track()
+            {
+                TagId = "BER456",
+                X = 77000,
+                Y = 22556,
+                Altitude = 790,
+                TimeStamp = DateTime.ParseExact("20180411123156789", "yyyyMMddHHmmssfff", null)
+            };
+
+            Track TrackData3 = new Track()
+            {
+                TagId = "BER789",
+                X = 70000,
+                Y = 27556,
+                Altitude = 720,
+                TimeStamp = DateTime.ParseExact("20170411123156789", "yyyyMMddHHmmssfff", null)
+            };
+
+            Track correctTrackData = new Track()
+            {
+                TagId = "BER257",
+                X = 74000,
+                Y = 23556,
+                Altitude = 750,
+                TimeStamp = DateTime.ParseExact("20190411123156789", "yyyyMMddHHmmssfff", null)
+            };
+
+            tracks.Add(TrackData1);
+            tracks.Add(TrackData2);
+            tracks.Add(TrackData3);
+
+            _uut.OnTransponderData(null, RawTestData);
+
+            foreach (var track in tracks)
+            {
+                Assert.That(track.TagId, Is.Not.EqualTo(correctTrackData.TagId));
+                Assert.That(track.X, Is.Not.EqualTo(correctTrackData.X));
+                Assert.That(track.Y, Is.Not.EqualTo(correctTrackData.Y));
+                Assert.That(track.Altitude, Is.Not.EqualTo(correctTrackData.Altitude));
+                Assert.That(DateTime.Compare(track.TimeStamp, correctTrackData.TimeStamp), Is.Not.Zero);
             }
         }
     }
