@@ -19,6 +19,16 @@
         <ClassMask>*</ClassMask>
         <FunctionMask>*</FunctionMask>
       </FilterEntry>
+      <FilterEntry>
+        <ModuleMask>AirTrafficHandin</ModuleMask>
+        <ClassMask>ConsoleLogger</ClassMask>
+        <FunctionsMask>*</FunctionsMask>
+      </FilterEntry>
+      <FilterEntry>
+        <ModuleMask>AirTrafficHandin</ModuleMask>
+        <ClassMask>FileLogger</ClassMask>
+        <FunctionsMask>*</FunctionsMask>
+      </FilterEntry>
     </ExcludeFilters>
   </Filters>
   <!-- Attribute filters. It's possible to use asterisks as wildcard symbols.
