@@ -619,6 +619,150 @@ namespace AirTrafficHandIn.Unit.Test
             // deregister the event because we are good boys and girls
             uut.TracksInAirspaceEvent -= tracksInAirspaceHandler;
         }
+
+        [Test]
+        public void AirspaceMonitor_IsInside_y_smaller_than_Y()
+        {
+            // Out uut
+            var airspace = new Airspace
+            {
+                X = 20,
+                Y = 20,
+                Z = 500,
+                depth = 80000,
+                width = 80000,
+                height = 20000
+            };
+
+            var trackCalculator = new TrackCalculator();
+            var uut = new AirspaceMonitor(airspace, trackCalculator);
+
+            // To keep result(s) after the event(s) has fired
+            List<List<Track>> results = new List<List<Track>>(); //Antal lister modtaget med tracks
+
+            // Our test handler
+            // This validates that the events arguments are correct
+            // Here we verify that the event indeed had 42 as expected
+            // And we save the value to results, such that we can verify how many times 
+            // the event fired and they all were correct
+            EventHandler<TracksInAirspaceArgs> tracksInAirspaceHandler = (object sender, TracksInAirspaceArgs e) =>
+            {
+                //int numInList = e.Tracks.Count; // Number of tracks in airspace
+                //Assert.That(numInList, Is.EqualTo(0));
+                var l = new List<Track>(); //Kopi af listen
+                foreach (var t in e.Tracks)
+                {
+                    l.Add(t);
+                }
+                results.Add(l);
+            };
+
+            // Register the test event handler
+            uut.TracksInAirspaceEvent += tracksInAirspaceHandler;
+
+            // Do stuff that trickers event
+            Track outsideTrack_y_smaller_than_Y = new Track
+            {
+                X = 1000,
+                Y = 15,
+                Altitude = 7000,
+                TagId = "BER207"
+            };
+
+            List<Track> tracksOutsideXList = new List<Track>
+            {
+                outsideTrack_y_smaller_than_Y
+            }; // opret liste
+
+
+            NewTrackArgs newTrack1 = new NewTrackArgs
+            {
+                Tracks = tracksOutsideXList  // Putter listen ned i tasken
+            };  // opret taske
+
+            uut.OnTrackRecieved(this, newTrack1);
+
+            // Verify the amount of events
+            Assert.That(results.Count, Is.EqualTo(1)); // Only one event must be fired in this test
+
+            // and their value(s)
+            Assert.That(results.ElementAt(0).Count, Is.EqualTo(0));
+
+            // deregister the event because we are good boys and girls
+            uut.TracksInAirspaceEvent -= tracksInAirspaceHandler;
+        }
+
+        [Test]
+        public void AirspaceMonitor_IsInside_z_smaller_than_Z()
+        {
+            // Out uut
+            var airspace = new Airspace
+            {
+                X = 20,
+                Y = 20,
+                Z = 500,
+                depth = 80000,
+                width = 80000,
+                height = 20000
+            };
+
+            var trackCalculator = new TrackCalculator();
+            var uut = new AirspaceMonitor(airspace, trackCalculator);
+
+            // To keep result(s) after the event(s) has fired
+            List<List<Track>> results = new List<List<Track>>(); //Antal lister modtaget med tracks
+
+            // Our test handler
+            // This validates that the events arguments are correct
+            // Here we verify that the event indeed had 42 as expected
+            // And we save the value to results, such that we can verify how many times 
+            // the event fired and they all were correct
+            EventHandler<TracksInAirspaceArgs> tracksInAirspaceHandler = (object sender, TracksInAirspaceArgs e) =>
+            {
+                //int numInList = e.Tracks.Count; // Number of tracks in airspace
+                //Assert.That(numInList, Is.EqualTo(0));
+                var l = new List<Track>(); //Kopi af listen
+                foreach (var t in e.Tracks)
+                {
+                    l.Add(t);
+                }
+                results.Add(l);
+            };
+
+            // Register the test event handler
+            uut.TracksInAirspaceEvent += tracksInAirspaceHandler;
+
+            // Do stuff that trickers event
+            Track outsideTrack_z_greather_than_Z_plus_height = new Track
+            {
+                X = 1000,
+                Y = 1000,
+                Altitude = 70,
+                TagId = "BER207"
+            };
+
+            List<Track> tracksOutsideXList = new List<Track>
+            {
+                outsideTrack_z_greather_than_Z_plus_height
+            }; // opret liste
+
+
+            NewTrackArgs newTrack1 = new NewTrackArgs
+            {
+                Tracks = tracksOutsideXList  // Putter listen ned i tasken
+            };  // opret taske
+
+            uut.OnTrackRecieved(this, newTrack1);
+
+            // Verify the amount of events
+            Assert.That(results.Count, Is.EqualTo(1)); // Only one event must be fired in this test
+
+            // and their value(s)
+            Assert.That(results.ElementAt(0).Count, Is.EqualTo(0));
+
+            // deregister the event because we are good boys and girls
+            uut.TracksInAirspaceEvent -= tracksInAirspaceHandler;
+        }
     }
     
 }
