@@ -95,8 +95,8 @@ namespace AirTrafficHandIn
             }
 
             var tracksInAirSpaceArgs = new TracksInAirspaceArgs {Tracks = TracksInAirspace};
-            TracksInAirspaceEvent(this, tracksInAirSpaceArgs);
-         
+            TracksInAirspaceEvent(this, tracksInAirSpaceArgs);         
+
 
         }
     }

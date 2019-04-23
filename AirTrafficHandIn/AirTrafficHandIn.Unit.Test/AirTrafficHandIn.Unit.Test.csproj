@@ -65,6 +65,7 @@
     <Compile Include="Tests\TestTrackCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\TestTransponderReciever.cs" />
+    <Compile Include="Tests\TestTrack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

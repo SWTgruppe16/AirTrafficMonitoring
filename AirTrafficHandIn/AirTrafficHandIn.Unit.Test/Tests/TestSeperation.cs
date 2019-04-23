@@ -70,48 +70,91 @@ namespace AirTrafficHandIn.Unit.Test
             Assert.That(_uut.IsToClose(a, b), Is.False);
         }
 
-        [Test]
-        public void NoSeparationConditionOccuredTest()
-        {
+        //[Test]
+        //public void NoSeparationConditionOccuredTest()
+        //{
 
 
-            // To keep result(s) after the event(s) has fired
-            var results = new List<List<ICondition>>();
+        //    // To keep result(s) after the event(s) has fired
+        //    var results = new List<List<ICondition>>();
 
-            // Our test handler
-            // This validates that the events arguments are correct
-            // Here we verify that the event indeed had as expected
-            // And we save the value to results, such that we can verify how many times 
-            // the event fired and they all were correct
-            EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
-            {
-                results.Add(e.Conditions);
-            };
-
-
-            // Do stuff that trickers event
-            List<Track> tracksEmptyList = new List<Track>(); // opret liste
-                                                             // Evt tilføj ting på listen
-            var newTrack = new TracksInAirspaceArgs
-            {
-                Tracks = tracksEmptyList  // Putter listen ned i tasken
-            };  // opret taske
-
-            
-            // Register the test event handler
-            this.uut.NewConditionsEvent += tracksInAirspaceHandler;
-
-            this.uut.OnTrackRecieved(this, newTrack); // Giv tasken til Caro
-
-            // deregister the event because we are good boys and girls
-            this.uut.NewConditionsEvent -= tracksInAirspaceHandler;
+        //    // Our test handler
+        //    // This validates that the events arguments are correct
+        //    // Here we verify that the event indeed had as expected
+        //    // And we save the value to results, such that we can verify how many times 
+        //    // the event fired and they all were correct
+        //    EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
+        //    {
+        //        results.Add(e.Conditions);
+        //    };
 
 
-            // Verify the amount of events
-            Assert.That(results.Count, Is.EqualTo(0)); // Zero events should be fired if no condition is met
+        //    // Do stuff that trickers event
+        //    List<Track> tracksEmptyList = new List<Track>(); // opret liste
+        //                                                     // Evt tilføj ting på listen
+        //    var newTrack = new TracksInAirspaceArgs
+        //    {
+        //        Tracks = tracksEmptyList  // Putter listen ned i tasken
+        //    };  // opret taske
 
             
-        }
+        //    // Register the test event handler
+        //    this.uut.NewConditionsEvent += tracksInAirspaceHandler;
+
+        //    this.uut.OnTrackRecieved(this, newTrack); // Giv tasken til Caro
+
+        //    // deregister the event because we are good boys and girls
+        //    this.uut.NewConditionsEvent -= tracksInAirspaceHandler;
+
+
+        //    // Verify the amount of events
+        //    Assert.That(results.Count, Is.EqualTo(0)); // Zero events should be fired if no condition is met
+
+            
+        //}
+
+        //[Test]
+        //public void CurrentConditionsTest()
+        //{
+
+
+        //    // To keep result(s) after the event(s) has fired
+        //    var results = new List<List<ICondition>>();
+
+        //    // Our test handler
+        //    // This validates that the events arguments are correct
+        //    // Here we verify that the event indeed had as expected
+        //    // And we save the value to results, such that we can verify how many times 
+        //    // the event fired and they all were correct
+        //    EventHandler<CurrentConditionArgs> tracksInAirspaceHandler = (object sender, CurrentConditionArgs e) =>
+        //    {
+        //        results.Add(e.Conditions);
+        //    };
+
+
+        //    // Do stuff that trickers event
+        //    List<Track> tracksEmptyList = new List<Track>(); // opret liste
+        //    // Evt tilføj ting på listen
+        //    var newTrack = new TracksInAirspaceArgs
+        //    {
+        //        Tracks = tracksEmptyList  // Putter listen ned i tasken
+        //    };  // opret taske
+
+
+        //    // Register the test event handler
+        //    this.uut.NewConditionsEvent += tracksInAirspaceHandler;
+
+        //    this.uut.OnTrackRecieved(this, newTrack); // Giv tasken til Caro
+
+        //    // deregister the event because we are good boys and girls
+        //    this.uut.NewConditionsEvent -= tracksInAirspaceHandler;
+
+
+        //    // Verify the amount of events
+        //    Assert.That(results.Count, Is.EqualTo(0)); // Zero events should be fired if no condition is met
+
+
+        //}
 
         [Test]
         public void SeparationConditionOccuredTest()

@@ -102,6 +102,8 @@ namespace AirTrafficHandIn
             }
 
             // Raise event with all current
+            //var currcond = new CurrentConditionArgs() { Conditions = currentConditions };
+            //CurrentConditionsEvent(this, currcond);
         }
 
         public void OnTrackRecieved(object sender, TracksInAirspaceArgs tracksInAirspaceArgs)
