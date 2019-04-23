@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ using AirTrafficHandIn.Interfaces;
 
 namespace AirTrafficHandIn
 {
+    [ExcludeFromCodeCoverage]
     public class ConsoleLogger : ILogger
     {
         private string trackEnteredString = "";
