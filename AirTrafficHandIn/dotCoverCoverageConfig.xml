@@ -20,7 +20,7 @@
         <FunctionMask>*</FunctionMask>
       </FilterEntry>
       <FilterEntry>
-        <ModuleMask>AirTrafficHandin</ModuleMask>
+        <ModuleMask>AirTrafficMonitoring</ModuleMask>
         <ClassMask>ConsoleLogger</ClassMask>
         <FunctionsMask>*</FunctionsMask>
       </FilterEntry>
