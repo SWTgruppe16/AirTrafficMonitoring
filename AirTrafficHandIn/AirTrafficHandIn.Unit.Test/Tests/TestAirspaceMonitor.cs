@@ -448,8 +448,8 @@ namespace AirTrafficHandIn.Unit.Test
             Track outsideTrack_x_greather_than_X_plus_width = new Track
             {
                 X = 100000,
-                Y = 15,
-                Altitude = 100,
+                Y = 1500,
+                Altitude = 1000,
                 TagId = "HEN207"
             };
 
@@ -519,9 +519,9 @@ namespace AirTrafficHandIn.Unit.Test
             // Do stuff that trickers event
             Track outsideTrack_y_greather_than_Y_plus_depth = new Track
             {
-                X = 15,
+                X = 100,
                 Y = 100000,
-                Altitude = 100,
+                Altitude = 1000,
                 TagId = "CAR123"
             };
 
@@ -591,8 +591,8 @@ namespace AirTrafficHandIn.Unit.Test
             // Do stuff that trickers event
             Track outsideTrack_z_greather_than_Z_plus_height = new Track
             {
-                X = 10,
-                Y = 15,
+                X = 1000,
+                Y = 1000,
                 Altitude = 70000,
                 TagId = "BER207"
             };
