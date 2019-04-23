@@ -83,6 +83,6 @@ namespace AirTrafficHandIn.Unit.Test
         //    Assert.IsTrue(airspace.Equals(airspaceCompare));
 
 
-        }
+        
     }
 }
