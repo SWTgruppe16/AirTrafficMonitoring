@@ -11,7 +11,7 @@ namespace AirTrafficHandIn
 
         public DateTime TimeOfOccurance { get; set;  }
         public List<string> InvolvedTagIds{ get; set; }
-        public string TypeOfCondition { get => "separation"; }
+        public string TypeOfCondition { get; private set; }
 
         public string ID
         {
@@ -32,15 +32,9 @@ namespace AirTrafficHandIn
 
         public SeparationCondition(DateTime datetime, string tag_a, string tag_b)
         {
+            TypeOfCondition = "separation";
             InvolvedTagIds = new List<string> { tag_a, tag_b };
             TimeOfOccurance = datetime;
-        }
-
-        public SeparationCondition(long v1, string v2, string v3)
-        {
-            this.v1 = v1;
-            this.v2 = v2;
-            this.v3 = v3;
         }
     }
 }

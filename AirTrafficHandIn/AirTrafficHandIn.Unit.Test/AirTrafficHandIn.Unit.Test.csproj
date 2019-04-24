@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tests\TestSeparationCondition.cs" />
     <Compile Include="Tests\TestAirspace.cs" />
     <Compile Include="Tests\TestAirspaceMonitor.cs" />
     <Compile Include="Tests\TestSeperation.cs" />
