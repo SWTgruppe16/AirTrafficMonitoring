@@ -26,20 +26,6 @@ namespace AirTrafficHandIn
             Tracker = tracker;
         }
 
-        public bool IsInAirspaceList(string tag_id)
-        {
-            foreach (var track in TracksInAirspace)
-            {
-                if (tag_id == track.TagId)
-                {
-                    return true;
-                }
-
-            }
-
-            return false;
-        }
-
         public Track GetTrackById(string tag_id)
         {
             foreach (var track in TracksInAirspace)

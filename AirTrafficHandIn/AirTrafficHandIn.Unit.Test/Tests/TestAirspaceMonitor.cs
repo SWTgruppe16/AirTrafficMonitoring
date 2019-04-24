@@ -7,17 +7,106 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using NSubstitute;
 
 namespace AirTrafficHandIn.Unit.Test
 {
     [TestFixture]
     class TestAirspaceMonitor
     {
+        private List<Track> _fakeTracksInAirspace;
+        private Airspace _Airspace;
+        private event EventHandler<TracksInAirspaceArgs> TracksInAirspaceEvent;
+        private ITrack _fakeTracker;
+
+        private AirspaceMonitor Uut;
+
+        internal Track _comparisonPlane;
+
+        // This function called before every test
         [SetUp]
         public void Setup()
         {
+            // Makings Subsitutes should be with interfaces :)
+            _fakeTracker = Substitute.For<ITrack>();
+            // This should have been a fake, but no interface :(
+            _Airspace = new Airspace
+            {
+                X = 0,
+                Y = 0,
+                Z = 500,
+                width = 80000,
+                depth = 80000,
+                height = 20000
+            };
+            TracksInAirspaceEvent = delegate { };
+            // This should be the only real instance :)
+            Uut = new AirspaceMonitor(_Airspace, _fakeTracker);
 
+            _comparisonPlane = new Track()
+            {
+                TagId = "HEN777",
+                Altitude = 1000,
+                X = 1000,
+                Y = 1000
+            };
+
+            var results = new List<List<Track>>();
+
+            // Inserting data in the List<Track>
+            // with Injected Tracks - "{ }"
+            // instead of making a new List<Track> and adding later :)
+
+            _fakeTracksInAirspace = new List<Track>() {
+                new Track
+                {
+                    TagId = "HEN123",
+                    Altitude = 1000,
+                    X = 1000,
+                    Y = 1000                }, // Comma separtion is needed ;)
+                new Track
+                {
+                    TagId = "HEN321",
+                    Altitude = 1000,
+                    X = 1000,
+                    Y = 1000                },
+                _comparisonPlane // this is added for comparisions
+            };
+
+            // Adding Tracks to the Unit under test
+            NewTrackArgs newTrack = new NewTrackArgs();
+            newTrack.Tracks = _fakeTracksInAirspace; 
+            Uut.OnTrackRecieved(this, newTrack);
         }
+
+
+
+        [TestCase(TestName ="Add Planes Should Return NotIsEmpty")]
+        [TestCase(TestName = "Add ")]
+        [TestCase(TestName = "Add Planes Should Return NotIsEmpty")]
+        public void AirspaceMonitorTest()
+        {
+               
+
+
+            Assert.Pass();
+        }
+
+        // Making testcase for tests with same logic
+        [TestCase("HEN777", true, TestName ="Search For Plane Should Return True")]
+        [TestCase("HEN666", false, TestName = "Search For Plane Should Return True")]
+        public void TrackIdTest(string testInput, bool testResult)
+        {
+            var comparison = (_comparisonPlane.Equals(Uut.GetTrackById(testInput)));
+
+            Assert.That(comparison, Is.EqualTo(testResult));
+        }
+
+
+
+
+
+
 
         [Test]
         public void AirspaceMonitorEmptyTest()
@@ -292,6 +381,7 @@ namespace AirTrafficHandIn.Unit.Test
             uut.TracksInAirspaceEvent -= tracksInAirspaceHandler;
         }
 
+        /*
         [Test]
         public void AirspaceMonitor_Replace_Track_With_Same_TagID()
         {
@@ -803,14 +893,13 @@ namespace AirTrafficHandIn.Unit.Test
             {
                 track_IsInAirspace
             }; // opret liste
-
             IsInAirspaceList.Add(track_IsInAirspace);
             IsInAirspaceList.Add(track2_IsInAirspace);
 
             Assert.That(uut.IsInAirspaceList(track2_IsInAirspace.TagId), Is.True);
             
         }
-
+        */
 
     }
 

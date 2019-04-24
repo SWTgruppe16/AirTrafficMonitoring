@@ -155,7 +155,7 @@ namespace AirTrafficHandIn.Unit.Test
 
 
         //}
-
+        [Test]
         public void No_Separation_Condition_Occurs_Test()
         {
             // To keep result(s) after the event(s) has fired
