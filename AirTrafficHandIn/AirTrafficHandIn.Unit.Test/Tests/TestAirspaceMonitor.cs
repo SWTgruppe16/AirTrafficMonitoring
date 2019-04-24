@@ -82,13 +82,9 @@ namespace AirTrafficHandIn.Unit.Test
 
 
         [TestCase(TestName ="Add Planes Should Return NotIsEmpty")]
-        [TestCase(TestName = "Add ")]
-        [TestCase(TestName = "Add Planes Should Return NotIsEmpty")]
         public void AirspaceMonitorTest()
         {
-               
-
-
+            
             Assert.Pass();
         }
 
@@ -381,7 +377,7 @@ namespace AirTrafficHandIn.Unit.Test
             uut.TracksInAirspaceEvent -= tracksInAirspaceHandler;
         }
 
-        /*
+        
         [Test]
         public void AirspaceMonitor_Replace_Track_With_Same_TagID()
         {
@@ -494,6 +490,7 @@ namespace AirTrafficHandIn.Unit.Test
             // deregister the event because we are good boys and girls
             uut.TracksInAirspaceEvent -= tracksInAirspaceHandler;
         }
+
 
         [Test]
         public void AirspaceMonitor_IsInside_x_greater_than_X_plus_Width_Test()
@@ -854,52 +851,6 @@ namespace AirTrafficHandIn.Unit.Test
             // deregister the event because we are good boys and girls
             uut.TracksInAirspaceEvent -= tracksInAirspaceHandler;
         }
-
-        [Test]
-        public void IsInAirspaceList_Test()
-        {
-            var airspace = new Airspace
-            {
-                X = 20,
-                Y = 20,
-                Z = 500,
-                depth = 80000,
-                width = 80000,
-                height = 20000
-            };
-
-            var trackCalculator = new TrackCalculator();
-            var uut = new AirspaceMonitor(airspace, trackCalculator);
-
-            Track track_IsInAirspace = new Track()
-            {
-                TagId = "BER257",
-                X = 74000,
-                Y = 23556,
-                Altitude = 750,
-                TimeStamp = DateTime.ParseExact("20190411123156789", "yyyyMMddHHmmssfff", null)
-            };
-
-            Track track2_IsInAirspace = new Track()
-            {
-                TagId = "BER258",
-                X = 74000,
-                Y = 23556,
-                Altitude = 750,
-                TimeStamp = DateTime.ParseExact("20190411123156789", "yyyyMMddHHmmssfff", null)
-            };
-
-            List<Track> IsInAirspaceList = new List<Track>
-            {
-                track_IsInAirspace
-            }; // opret liste
-            IsInAirspaceList.Add(track_IsInAirspace);
-            IsInAirspaceList.Add(track2_IsInAirspace);
-
-            Assert.That(uut.IsInAirspaceList(track2_IsInAirspace.TagId), Is.True);
-            
-        }
-        */
 
     }
 
