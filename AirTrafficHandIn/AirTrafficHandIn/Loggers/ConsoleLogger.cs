@@ -9,7 +9,6 @@ using AirTrafficHandIn.Interfaces;
 
 namespace AirTrafficHandIn
 {
-    [ExcludeFromCodeCoverage]
     public class ConsoleLogger : ILogger
     {
         private string trackEnteredString = "";

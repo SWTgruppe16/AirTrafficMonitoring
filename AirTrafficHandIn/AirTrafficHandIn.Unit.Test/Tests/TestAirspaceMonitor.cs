@@ -763,6 +763,41 @@ namespace AirTrafficHandIn.Unit.Test
             // deregister the event because we are good boys and girls
             uut.TracksInAirspaceEvent -= tracksInAirspaceHandler;
         }
+
+        [Test]
+        public void IsInAirspaceList_Test()
+        {
+            var airspace = new Airspace
+            {
+                X = 20,
+                Y = 20,
+                Z = 500,
+                depth = 80000,
+                width = 80000,
+                height = 20000
+            };
+
+            var trackCalculator = new TrackCalculator();
+            var uut = new AirspaceMonitor(airspace, trackCalculator);
+
+            Track track_IsInAirspace = new Track()
+            {
+                TagId = "BER257",
+                X = 74000,
+                Y = 23556,
+                Altitude = 750,
+                TimeStamp = DateTime.ParseExact("20190411123156789", "yyyyMMddHHmmssfff", null)
+            };
+
+            List<Track> IsInAirspaceList = new List<Track>
+            {
+                track_IsInAirspace
+            }; // opret liste
+
+            IsInAirspaceList.Add(track_IsInAirspace);
+
+            Assert.AreEqual(uut.IsInAirspaceList(track_IsInAirspace.TagId) == trac);
+        }
     }
     
 }
