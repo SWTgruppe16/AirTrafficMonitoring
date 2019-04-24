@@ -192,7 +192,7 @@ namespace AirTrafficHandIn.Unit.Test
             var b1 = new Track
             {
                 TagId = "HEN321",
-                Altitude = 100,
+                Altitude = 500000,
                 X = 10,
                 Y = 10
             };
@@ -289,6 +289,7 @@ namespace AirTrafficHandIn.Unit.Test
             // To keep result(s) after the event(s) has fired
             var results = new List<List<ICondition>>();
 
+
             // Our test handler
             // This validates that the events arguments are correct
             // Here we verify that the event indeed had as expected
@@ -296,7 +297,9 @@ namespace AirTrafficHandIn.Unit.Test
             // the event fired and they all were correct
             EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
             {
+                foreach(var track in e.Conditions) { 
                 results.Add(e.Conditions);
+                }
             };
 
 
@@ -320,7 +323,7 @@ namespace AirTrafficHandIn.Unit.Test
             var b = new Track
             {
                 TagId = "HEN321",
-                Altitude = 10,
+                Altitude = 11,
                 X = 10,
                 Y = 10
             };
@@ -328,22 +331,14 @@ namespace AirTrafficHandIn.Unit.Test
             var c = new Track
             {
                 TagId = "Car123",
-                Altitude = 20,
+                Altitude = 12,
                 X = 10,
                 Y = 10
             };
 
-            var d = new Track
-            {
-                TagId = "Car321",
-                Altitude = 20,
-                X = 10,
-                Y = 10
-            };
             tracks.Add(a);          // tilføjer to fly til min liste
             tracks.Add(b);
             tracks.Add(c);
-            tracks.Add(d);
 
             var tracksInAirspaceArgs = new TracksInAirspaceArgs
             {
@@ -359,7 +354,7 @@ namespace AirTrafficHandIn.Unit.Test
 
 
             // Verify the amount of events
-            Assert.That(results.Count, Is.EqualTo(2)); // 1 events should be fired if 1 condition is met
+            Assert.That(results.Count, Is.EqualTo(3)); // Der står 3 her
 
         }
 
@@ -376,7 +371,9 @@ namespace AirTrafficHandIn.Unit.Test
             // the event fired and they all were correct
             EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
             {
-                results.Add(e.Conditions);
+                foreach (var track in e.Conditions) { 
+                    results.Add(e.Conditions);
+                }
             };
 
 
@@ -408,7 +405,7 @@ namespace AirTrafficHandIn.Unit.Test
             var c = new Track
             {
                 TagId = "Car123",
-                Altitude = 20,
+                Altitude = 10,
                 X = 10,
                 Y = 10
             };
@@ -416,68 +413,10 @@ namespace AirTrafficHandIn.Unit.Test
             var d = new Track
             {
                 TagId = "Car321",
-                Altitude = 20,
+                Altitude = 10,
                 X = 10,
                 Y = 10
             };
-
-            var g = new Track
-            {
-                TagId = "Ber123",
-                Altitude = 50,
-                X = 10,
-                Y = 10
-            };
-
-            var f = new Track
-            {
-                TagId = "Ber321",
-                Altitude = 50,
-                X = 10,
-                Y = 10
-            };
-
-            var h = new Track
-            {
-                TagId = "ABC123",
-                Altitude = 25,
-                X = 10,
-                Y = 10
-            };
-
-            var i = new Track
-            {
-                TagId = "ABC321",
-                Altitude = 25,
-                X = 10,
-                Y = 10
-            };
-
-            var k = new Track
-            {
-                TagId = "CDE123",
-                Altitude = 29,
-                X = 10,
-                Y = 10
-            };
-
-            var l = new Track
-            {
-                TagId = "CDE321",
-                Altitude = 29,
-                X = 10,
-                Y = 10
-            };
-            tracks.Add(a);          // tilføjer to fly til min liste
-            tracks.Add(b);
-            tracks.Add(c);
-            tracks.Add(d);
-            tracks.Add(f);
-            tracks.Add(g);
-            tracks.Add(h);
-            tracks.Add(k);
-            tracks.Add(i);
-            tracks.Add(l);
 
             var tracksInAirspaceArgs = new TracksInAirspaceArgs
             {
@@ -485,6 +424,11 @@ namespace AirTrafficHandIn.Unit.Test
             };  // opret taske
 
             uut.NewConditionsEvent += tracksInAirspaceHandler;
+            // tilføjer to fly til min liste
+            tracks.Add(a);          
+            tracks.Add(b);
+            tracks.Add(c);
+            tracks.Add(d);
 
             uut.OnTrackRecieved(this, tracksInAirspaceArgs); // Giv tasken til Caro
 
@@ -493,7 +437,7 @@ namespace AirTrafficHandIn.Unit.Test
 
 
             // Verify the amount of events
-            Assert.That(results.Count, Is.EqualTo(5)); // 1 events should be fired if 1 condition is met
+            Assert.That(results.Count, Is.EqualTo(6)); // 
 
         }
 
