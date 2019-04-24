@@ -16,7 +16,7 @@ namespace AirTrafficHandIn.Unit.Test
         [SetUp]
         public void Setup()
         {
-            
+
         }
 
         [Test]
@@ -322,7 +322,8 @@ namespace AirTrafficHandIn.Unit.Test
                 //int numInList = e.Tracks.Count; // Number of tracks in airspace
                 //Assert.That(numInList, Is.EqualTo(0));
                 var l = new List<Track>(); //Kopi af listen
-                foreach (var t in e.Tracks) {
+                foreach (var t in e.Tracks)
+                {
                     l.Add(t);
                 }
                 results.Add(l);
@@ -370,7 +371,7 @@ namespace AirTrafficHandIn.Unit.Test
             List<Track> tracksOutsideListSameTagID = new List<Track>
             {
                 outsideTrackSameTagIDasInsideTrack
-            }; 
+            };
 
             NewTrackArgs newTrack = new NewTrackArgs
             {
@@ -457,7 +458,7 @@ namespace AirTrafficHandIn.Unit.Test
             {
                 outsideTrack_x_greather_than_X_plus_width
             }; // opret liste
-            
+
 
             NewTrackArgs newTrack1 = new NewTrackArgs
             {
@@ -789,15 +790,27 @@ namespace AirTrafficHandIn.Unit.Test
                 TimeStamp = DateTime.ParseExact("20190411123156789", "yyyyMMddHHmmssfff", null)
             };
 
+            Track track2_IsInAirspace = new Track()
+            {
+                TagId = "BER258",
+                X = 74000,
+                Y = 23556,
+                Altitude = 750,
+                TimeStamp = DateTime.ParseExact("20190411123156789", "yyyyMMddHHmmssfff", null)
+            };
+
             List<Track> IsInAirspaceList = new List<Track>
             {
                 track_IsInAirspace
             }; // opret liste
 
             IsInAirspaceList.Add(track_IsInAirspace);
-
-            Assert.AreEqual(uut.IsInAirspaceList(track_IsInAirspace.TagId) == trac);
+            IsInAirspaceList.Add(track2_IsInAirspace);
+            Assert.That(uut.IsInAirspaceList(track2_IsInAirspace.TagId), Is.True);
+            
         }
+
+
     }
-    
+
 }
