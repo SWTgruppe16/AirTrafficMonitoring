@@ -806,6 +806,7 @@ namespace AirTrafficHandIn.Unit.Test
 
             IsInAirspaceList.Add(track_IsInAirspace);
             IsInAirspaceList.Add(track2_IsInAirspace);
+
             Assert.That(uut.IsInAirspaceList(track2_IsInAirspace.TagId), Is.True);
             
         }

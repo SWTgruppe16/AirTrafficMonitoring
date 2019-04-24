@@ -97,7 +97,7 @@ namespace AirTrafficHandIn.Unit.Test
         //        Tracks = tracksEmptyList  // Putter listen ned i tasken
         //    };  // opret taske
 
-            
+
         //    // Register the test event handler
         //    this.uut.NewConditionsEvent += tracksInAirspaceHandler;
 
@@ -110,7 +110,7 @@ namespace AirTrafficHandIn.Unit.Test
         //    // Verify the amount of events
         //    Assert.That(results.Count, Is.EqualTo(0)); // Zero events should be fired if no condition is met
 
-            
+
         //}
 
         //[Test]
@@ -156,8 +156,71 @@ namespace AirTrafficHandIn.Unit.Test
 
         //}
 
+        public void No_Separation_Condition_Occurs_Test()
+        {
+            // To keep result(s) after the event(s) has fired
+            var results = new List<List<ICondition>>();
+
+            // Our test handler
+            // This validates that the events arguments are correct
+            // Here we verify that the event indeed had as expected
+            // And we save the value to results, such that we can verify how many times 
+            // the event fired and they all were correct
+            EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
+            {
+                results.Add(e.Conditions);
+            };
+
+
+
+            // Register the test event handler
+
+            // Do stuff that trickers event
+            var tracks = new List<Track>(); // opret liste
+
+
+            //opretter to fly, med ingen condition imellem
+
+            var a1 = new Track
+            {
+                TagId = "HEN123",
+                Altitude = 10,
+                X = 10,
+                Y = 10
+            };
+
+            var b1 = new Track
+            {
+                TagId = "HEN321",
+                Altitude = 100,
+                X = 10,
+                Y = 10
+            };
+
+            tracks.Add(a1);          // tilføjer to fly til min liste
+            tracks.Add(b1);
+
+
+            var tracksInAirspaceArgs = new TracksInAirspaceArgs
+            {
+                Tracks = tracks  // Putter listen ned i tasken
+            };  // opret taske
+
+            uut.NewConditionsEvent += tracksInAirspaceHandler;
+
+            uut.OnTrackRecieved(this, tracksInAirspaceArgs); // Giv tasken til Caro
+
+            // deregister the event because we are good boys and girls
+            uut.NewConditionsEvent -= tracksInAirspaceHandler;
+
+
+            // Verify the amount of events
+            Assert.That(results.Count, Is.EqualTo(0)); // 1 events should be fired if 1 condition is met
+
+        }
+
         [Test]
-        public void SeparationConditionOccuredTest()
+        public void Separation_Condition_Occured_Test()
         {
             // To keep result(s) after the event(s) has fired
             var results = new List<List<ICondition>>();
@@ -220,9 +283,222 @@ namespace AirTrafficHandIn.Unit.Test
 
         }
 
+        [Test]
+        public void More_Than_one_Separation_Condition_Occured_Test()
+        {
+            // To keep result(s) after the event(s) has fired
+            var results = new List<List<ICondition>>();
+
+            // Our test handler
+            // This validates that the events arguments are correct
+            // Here we verify that the event indeed had as expected
+            // And we save the value to results, such that we can verify how many times 
+            // the event fired and they all were correct
+            EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
+            {
+                results.Add(e.Conditions);
+            };
+
+
+
+            // Register the test event handler
+
+            // Do stuff that trickers event
+            var tracks = new List<Track>(); // opret liste
+
+
+            //opretter to fly, med condition imellem
+
+            var a = new Track
+            {
+                TagId = "HEN123",
+                Altitude = 10,
+                X = 10,
+                Y = 10
+            };
+
+            var b = new Track
+            {
+                TagId = "HEN321",
+                Altitude = 10,
+                X = 10,
+                Y = 10
+            };
+
+            var c = new Track
+            {
+                TagId = "Car123",
+                Altitude = 20,
+                X = 10,
+                Y = 10
+            };
+
+            var d = new Track
+            {
+                TagId = "Car321",
+                Altitude = 20,
+                X = 10,
+                Y = 10
+            };
+            tracks.Add(a);          // tilføjer to fly til min liste
+            tracks.Add(b);
+            tracks.Add(c);
+            tracks.Add(d);
+
+            var tracksInAirspaceArgs = new TracksInAirspaceArgs
+            {
+                Tracks = tracks  // Putter listen ned i tasken
+            };  // opret taske
+
+            uut.NewConditionsEvent += tracksInAirspaceHandler;
+
+            uut.OnTrackRecieved(this, tracksInAirspaceArgs); // Giv tasken til Caro
+
+            // deregister the event because we are good boys and girls
+            uut.NewConditionsEvent -= tracksInAirspaceHandler;
+
+
+            // Verify the amount of events
+            Assert.That(results.Count, Is.EqualTo(2)); // 1 events should be fired if 1 condition is met
+
+        }
 
         [Test]
-        public void OneSeparationConditionOccuredWithFourFligthsInAirspaceTest()
+        public void Many_Separation_Conditions_Occured_Test()
+        {
+            // To keep result(s) after the event(s) has fired
+            var results = new List<List<ICondition>>();
+
+            // Our test handler
+            // This validates that the events arguments are correct
+            // Here we verify that the event indeed had as expected
+            // And we save the value to results, such that we can verify how many times 
+            // the event fired and they all were correct
+            EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
+            {
+                results.Add(e.Conditions);
+            };
+
+
+
+            // Register the test event handler
+
+            // Do stuff that trickers event
+            var tracks = new List<Track>(); // opret liste
+
+
+            //opretter to fly, med condition imellem
+
+            var a = new Track
+            {
+                TagId = "HEN123",
+                Altitude = 10,
+                X = 10,
+                Y = 10
+            };
+
+            var b = new Track
+            {
+                TagId = "HEN321",
+                Altitude = 10,
+                X = 10,
+                Y = 10
+            };
+
+            var c = new Track
+            {
+                TagId = "Car123",
+                Altitude = 20,
+                X = 10,
+                Y = 10
+            };
+
+            var d = new Track
+            {
+                TagId = "Car321",
+                Altitude = 20,
+                X = 10,
+                Y = 10
+            };
+
+            var g = new Track
+            {
+                TagId = "Ber123",
+                Altitude = 50,
+                X = 10,
+                Y = 10
+            };
+
+            var f = new Track
+            {
+                TagId = "Ber321",
+                Altitude = 50,
+                X = 10,
+                Y = 10
+            };
+
+            var h = new Track
+            {
+                TagId = "ABC123",
+                Altitude = 25,
+                X = 10,
+                Y = 10
+            };
+
+            var i = new Track
+            {
+                TagId = "ABC321",
+                Altitude = 25,
+                X = 10,
+                Y = 10
+            };
+
+            var k = new Track
+            {
+                TagId = "CDE123",
+                Altitude = 29,
+                X = 10,
+                Y = 10
+            };
+
+            var l = new Track
+            {
+                TagId = "CDE321",
+                Altitude = 29,
+                X = 10,
+                Y = 10
+            };
+            tracks.Add(a);          // tilføjer to fly til min liste
+            tracks.Add(b);
+            tracks.Add(c);
+            tracks.Add(d);
+            tracks.Add(f);
+            tracks.Add(g);
+            tracks.Add(h);
+            tracks.Add(k);
+            tracks.Add(i);
+            tracks.Add(l);
+
+            var tracksInAirspaceArgs = new TracksInAirspaceArgs
+            {
+                Tracks = tracks  // Putter listen ned i tasken
+            };  // opret taske
+
+            uut.NewConditionsEvent += tracksInAirspaceHandler;
+
+            uut.OnTrackRecieved(this, tracksInAirspaceArgs); // Giv tasken til Caro
+
+            // deregister the event because we are good boys and girls
+            uut.NewConditionsEvent -= tracksInAirspaceHandler;
+
+
+            // Verify the amount of events
+            Assert.That(results.Count, Is.EqualTo(5)); // 1 events should be fired if 1 condition is met
+
+        }
+
+        [Test]
+        public void One_Separation_Condition_Occured_With_Four_Fligths_In_Airspace_Test()
         {
             // To keep result(s) after the event(s) has fired
             var results = new List<List<ICondition>>();
@@ -299,7 +575,7 @@ namespace AirTrafficHandIn.Unit.Test
         }
 
         [Test]
-        public void IsNoLongereACondition_ConditionRemoved()
+        public void Is_No_Longere_ACondition_Condition_Removed()
         {
             // To keep result(s) after the event(s) has fired
             var results = new List<List<ICondition>>();

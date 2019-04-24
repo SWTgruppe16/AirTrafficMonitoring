@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\AirTrafficHandIn"
+    "\\AirTrafficHandIn",
+    "\\AirTrafficHandIn\\AirTrafficHandIn.Unit.Test\\Tests"
   ],
-  "SelectedNode": "\\AirTrafficHandIn\\AirTrafficHandIn.sln",
+  "SelectedNode": "\\AirTrafficHandIn",
   "PreviewInSolutionExplorer": false
 }
