@@ -38,5 +38,34 @@ namespace AirTrafficHandIn.Unit.Test
             Assert.AreEqual(expectedString, result);
         }
 
+        [Test]
+        public void ToString_Return_False_Test()
+        {
+            var uut = new Track();
+
+            Track track = new Track()
+            {
+                TagId = "BER258",
+                X = 74000,
+                Y = 23556,
+                Altitude = 750,
+                TimeStamp = DateTime.ParseExact("20190411123156789", "yyyyMMddHHmmssfff", null)
+            };
+
+            Track track2 = new Track()
+            {
+                TagId = "BER258",
+                X = 74000,
+                Y = 23556,
+                Altitude = 750,
+                TimeStamp = DateTime.ParseExact("20190411123156789", "yyyyMMddHHmmssfff", null)
+            };
+
+
+            string result = track.ToString();
+            string expectedString = "{ID: hej" + " (" + track.X + "," + track.Y + "," + track.Altitude + ") Speed: " +
+                                 track.Velocity + "}";
+            Assert.AreNotEqual(expectedString, result);
+        }
     }
 }

@@ -70,399 +70,310 @@ namespace AirTrafficHandIn.Unit.Test
             Assert.That(_uut.IsToClose(a, b), Is.False);
         }
 
-        //[Test]
-        //public void NoSeparationConditionOccuredTest()
-        //{
-
-
-        //    // To keep result(s) after the event(s) has fired
-        //    var results = new List<List<ICondition>>();
-
-        //    // Our test handler
-        //    // This validates that the events arguments are correct
-        //    // Here we verify that the event indeed had as expected
-        //    // And we save the value to results, such that we can verify how many times 
-        //    // the event fired and they all were correct
-        //    EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
-        //    {
-        //        results.Add(e.Conditions);
-        //    };
-
-
-        //    // Do stuff that trickers event
-        //    List<Track> tracksEmptyList = new List<Track>(); // opret liste
-        //                                                     // Evt tilføj ting på listen
-        //    var newTrack = new TracksInAirspaceArgs
-        //    {
-        //        Tracks = tracksEmptyList  // Putter listen ned i tasken
-        //    };  // opret taske
-
-
-        //    // Register the test event handler
-        //    this.uut.NewConditionsEvent += tracksInAirspaceHandler;
-
-        //    this.uut.OnTrackRecieved(this, newTrack); // Giv tasken til Caro
-
-        //    // deregister the event because we are good boys and girls
-        //    this.uut.NewConditionsEvent -= tracksInAirspaceHandler;
-
-
-        //    // Verify the amount of events
-        //    Assert.That(results.Count, Is.EqualTo(0)); // Zero events should be fired if no condition is met
-
-
-        //}
-
-        //[Test]
-        //public void CurrentConditionsTest()
-        //{
-
-
-        //    // To keep result(s) after the event(s) has fired
-        //    var results = new List<List<ICondition>>();
-
-        //    // Our test handler
-        //    // This validates that the events arguments are correct
-        //    // Here we verify that the event indeed had as expected
-        //    // And we save the value to results, such that we can verify how many times 
-        //    // the event fired and they all were correct
-        //    EventHandler<CurrentConditionArgs> tracksInAirspaceHandler = (object sender, CurrentConditionArgs e) =>
-        //    {
-        //        results.Add(e.Conditions);
-        //    };
-
-
-        //    // Do stuff that trickers event
-        //    List<Track> tracksEmptyList = new List<Track>(); // opret liste
-        //    // Evt tilføj ting på listen
-        //    var newTrack = new TracksInAirspaceArgs
-        //    {
-        //        Tracks = tracksEmptyList  // Putter listen ned i tasken
-        //    };  // opret taske
-
-
-        //    // Register the test event handler
-        //    this.uut.NewConditionsEvent += tracksInAirspaceHandler;
-
-        //    this.uut.OnTrackRecieved(this, newTrack); // Giv tasken til Caro
-
-        //    // deregister the event because we are good boys and girls
-        //    this.uut.NewConditionsEvent -= tracksInAirspaceHandler;
-
-
-        //    // Verify the amount of events
-        //    Assert.That(results.Count, Is.EqualTo(0)); // Zero events should be fired if no condition is met
-
-
-        //}
         [Test]
         public void No_Separation_Condition_Occurs_Test()
+    {
+        // To keep result(s) after the event(s) has fired
+        var results = new List<List<ICondition>>();
+
+        // Our test handler
+        // This validates that the events arguments are correct
+        // Here we verify that the event indeed had as expected
+        // And we save the value to results, such that we can verify how many times 
+        // the event fired and they all were correct
+        EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
         {
-            // To keep result(s) after the event(s) has fired
-            var results = new List<List<ICondition>>();
+            results.Add(e.Conditions);
+        };
+        // Register the test event handler
 
-            // Our test handler
-            // This validates that the events arguments are correct
-            // Here we verify that the event indeed had as expected
-            // And we save the value to results, such that we can verify how many times 
-            // the event fired and they all were correct
-            EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
-            {
-                results.Add(e.Conditions);
-            };
+        // Do stuff that trickers event
+        var tracks = new List<Track>(); // opret liste
 
 
+        //opretter to fly, med ingen condition imellem
+        var a1 = new Track
+        {
+            TagId = "HEN123",
+            Altitude = 10,
+            X = 10,
+            Y = 10
+        };
 
-            // Register the test event handler
+        var b1 = new Track
+        {
+            TagId = "HEN321",
+            Altitude = 500000,
+            X = 10,
+            Y = 10
+        };
 
-            // Do stuff that trickers event
-            var tracks = new List<Track>(); // opret liste
-
-
-            //opretter to fly, med ingen condition imellem
-
-            var a1 = new Track
-            {
-                TagId = "HEN123",
-                Altitude = 10,
-                X = 10,
-                Y = 10
-            };
-
-            var b1 = new Track
-            {
-                TagId = "HEN321",
-                Altitude = 500000,
-                X = 10,
-                Y = 10
-            };
-
-            tracks.Add(a1);          // tilføjer to fly til min liste
-            tracks.Add(b1);
+        tracks.Add(a1); // tilføjer to fly til min liste
+        tracks.Add(b1);
 
 
-            var tracksInAirspaceArgs = new TracksInAirspaceArgs
-            {
-                Tracks = tracks  // Putter listen ned i tasken
-            };  // opret taske
+        var tracksInAirspaceArgs = new TracksInAirspaceArgs
+        {
+            Tracks = tracks  // Putter listen ned i tasken
+        };  // opret taske
 
-            uut.NewConditionsEvent += tracksInAirspaceHandler;
+        uut.NewConditionsEvent += tracksInAirspaceHandler;
 
-            uut.OnTrackRecieved(this, tracksInAirspaceArgs); // Giv tasken til Caro
+        uut.OnTrackRecieved(this, tracksInAirspaceArgs); // Giv tasken til Caro
 
-            // deregister the event because we are good boys and girls
-            uut.NewConditionsEvent -= tracksInAirspaceHandler;
+        // deregister the event because we are good boys and girls
+        uut.NewConditionsEvent -= tracksInAirspaceHandler;
 
 
-            // Verify the amount of events
-            Assert.That(results.Count, Is.EqualTo(0)); // 1 events should be fired if 1 condition is met
+        // Verify the amount of events
+        Assert.That(results.Count, Is.EqualTo(0)); // 1 events should be fired if 1 condition is met
 
-        }
+    }
 
         [Test]
         public void Separation_Condition_Occured_Test()
+    {
+        // To keep result(s) after the event(s) has fired
+        var results = new List<List<ICondition>>();
+
+        // Our test handler
+        // This validates that the events arguments are correct
+        // Here we verify that the event indeed had as expected
+        // And we save the value to results, such that we can verify how many times 
+        // the event fired and they all were correct
+        EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
         {
-            // To keep result(s) after the event(s) has fired
-            var results = new List<List<ICondition>>();
-
-            // Our test handler
-            // This validates that the events arguments are correct
-            // Here we verify that the event indeed had as expected
-            // And we save the value to results, such that we can verify how many times 
-            // the event fired and they all were correct
-            EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
-            {
-                results.Add(e.Conditions);
-            };
-
-            
-
-            // Register the test event handler
-
-            // Do stuff that trickers event
-            var tracks = new List<Track>(); // opret liste
+            results.Add(e.Conditions);
+        };
 
 
-            //opretter to fly, med condition imellem
 
-            var a1 = new Track
-            {
-                TagId = "HEN123",
-                Altitude = 10,
-                X = 10,
-                Y = 10
-            };
+        // Register the test event handler
 
-            var b1 = new Track
-            {
-                TagId = "HEN321",
-                Altitude = 10,
-                X = 10,
-                Y = 10
-            };
-
-            tracks.Add(a1);          // tilføjer to fly til min liste
-            tracks.Add(b1);
-            
-
-            var tracksInAirspaceArgs = new TracksInAirspaceArgs
-            {
-                Tracks = tracks  // Putter listen ned i tasken
-            };  // opret taske
-
-            uut.NewConditionsEvent += tracksInAirspaceHandler;
-
-            uut.OnTrackRecieved(this, tracksInAirspaceArgs); // Giv tasken til Caro
-
-            // deregister the event because we are good boys and girls
-            uut.NewConditionsEvent -= tracksInAirspaceHandler;
+        // Do stuff that trickers event
+        var tracks = new List<Track>(); // opret liste
 
 
-            // Verify the amount of events
-            Assert.That(results.Count, Is.EqualTo(1)); // 1 events should be fired if 1 condition is met
+        //opretter to fly, med condition imellem
 
-        }
+        var a1 = new Track
+        {
+            TagId = "HEN123",
+            Altitude = 10,
+            X = 10,
+            Y = 10
+        };
+
+        var b1 = new Track
+        {
+            TagId = "HEN321",
+            Altitude = 10,
+            X = 10,
+            Y = 10
+        };
+
+        tracks.Add(a1);          // tilføjer to fly til min liste
+        tracks.Add(b1);
+
+
+        var tracksInAirspaceArgs = new TracksInAirspaceArgs
+        {
+            Tracks = tracks  // Putter listen ned i tasken
+        };  // opret taske
+
+        uut.NewConditionsEvent += tracksInAirspaceHandler;
+
+        uut.OnTrackRecieved(this, tracksInAirspaceArgs); // Giv tasken til modtager
+
+        // deregister the event because we are good boys and girls
+        uut.NewConditionsEvent -= tracksInAirspaceHandler;
+
+
+        // Verify the amount of events
+        Assert.That(results.Count, Is.EqualTo(1)); // 1 events should be fired if 1 condition is met
+
+    }
 
         [Test]
         public void More_Than_one_Separation_Condition_Occured_Test()
+    {
+        // To keep result(s) after the event(s) has fired
+        var results = new List<List<ICondition>>();
+
+
+        // Our test handler
+        // This validates that the events arguments are correct
+        // Here we verify that the event indeed had as expected
+        // And we save the value to results, such that we can verify how many times 
+        // the event fired and they all were correct
+        EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
         {
-            // To keep result(s) after the event(s) has fired
-            var results = new List<List<ICondition>>();
-
-
-            // Our test handler
-            // This validates that the events arguments are correct
-            // Here we verify that the event indeed had as expected
-            // And we save the value to results, such that we can verify how many times 
-            // the event fired and they all were correct
-            EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
-            {
-                foreach(var track in e.Conditions) { 
+            foreach (var track in e.Conditions) {
                 results.Add(e.Conditions);
-                }
-            };
+            }
+        };
 
 
 
-            // Register the test event handler
+        // Register the test event handler
 
-            // Do stuff that trickers event
-            var tracks = new List<Track>(); // opret liste
-
-
-            //opretter to fly, med condition imellem
-
-            var a = new Track
-            {
-                TagId = "HEN123",
-                Altitude = 10,
-                X = 10,
-                Y = 10
-            };
-
-            var b = new Track
-            {
-                TagId = "HEN321",
-                Altitude = 11,
-                X = 10,
-                Y = 10
-            };
-
-            var c = new Track
-            {
-                TagId = "Car123",
-                Altitude = 12,
-                X = 10,
-                Y = 10
-            };
-
-            tracks.Add(a);          // tilføjer to fly til min liste
-            tracks.Add(b);
-            tracks.Add(c);
-
-            var tracksInAirspaceArgs = new TracksInAirspaceArgs
-            {
-                Tracks = tracks  // Putter listen ned i tasken
-            };  // opret taske
-
-            uut.NewConditionsEvent += tracksInAirspaceHandler;
-
-            uut.OnTrackRecieved(this, tracksInAirspaceArgs); // Giv tasken til Caro
-
-            // deregister the event because we are good boys and girls
-            uut.NewConditionsEvent -= tracksInAirspaceHandler;
+        // Do stuff that trickers event
+        var tracks = new List<Track>(); // opret liste
 
 
-            // Verify the amount of events
-            Assert.That(results.Count, Is.EqualTo(3)); // Der står 3 her
+        //opretter tre fly, med condition imellem
 
-        }
+        var a = new Track
+        {
+            TagId = "HEN123",
+            Altitude = 10,
+            X = 10,
+            Y = 10
+        };
+
+        var b = new Track
+        {
+            TagId = "HEN321",
+            Altitude = 11,
+            X = 10,
+            Y = 10
+        };
+
+        var c = new Track
+        {
+            TagId = "Car123",
+            Altitude = 12,
+            X = 10,
+            Y = 10
+        };
+
+        tracks.Add(a);          // tilføjer to fly til min liste
+        tracks.Add(b);
+        tracks.Add(c);
+
+        var tracksInAirspaceArgs = new TracksInAirspaceArgs
+        {
+            Tracks = tracks  // Putter listen ned i tasken
+        };  // opret taske
+
+        uut.NewConditionsEvent += tracksInAirspaceHandler;
+
+        uut.OnTrackRecieved(this, tracksInAirspaceArgs); // Giv tasken til Caro
+
+        // deregister the event because we are good boys and girls
+        uut.NewConditionsEvent -= tracksInAirspaceHandler;
+
+
+        // Verify the amount of events
+        Assert.That(results.Count, Is.EqualTo(3)); // forventet resultat er 3
+
+    }
 
         [Test]
         public void Many_Separation_Conditions_Occured_Test()
+    {
+        // To keep result(s) after the event(s) has fired
+        var results = new List<List<ICondition>>();
+
+        // Our test handler
+        // This validates that the events arguments are correct
+        // Here we verify that the event indeed had as expected
+        // And we save the value to results, such that we can verify how many times 
+        // the event fired and they all were correct
+        EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
         {
-            // To keep result(s) after the event(s) has fired
-            var results = new List<List<ICondition>>();
-
-            // Our test handler
-            // This validates that the events arguments are correct
-            // Here we verify that the event indeed had as expected
-            // And we save the value to results, such that we can verify how many times 
-            // the event fired and they all were correct
-            EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
-            {
-                foreach (var track in e.Conditions) { 
-                    results.Add(e.Conditions);
-                }
-            };
+            foreach (var track in e.Conditions) {
+                results.Add(e.Conditions);
+            }
+        };
 
 
 
-            // Register the test event handler
+        // Register the test event handler
 
-            // Do stuff that trickers event
-            var tracks = new List<Track>(); // opret liste
-
-
-            //opretter to fly, med condition imellem
-
-            var a = new Track
-            {
-                TagId = "HEN123",
-                Altitude = 10,
-                X = 10,
-                Y = 10
-            };
-
-            var b = new Track
-            {
-                TagId = "HEN321",
-                Altitude = 10,
-                X = 10,
-                Y = 10
-            };
-
-            var c = new Track
-            {
-                TagId = "Car123",
-                Altitude = 10,
-                X = 10,
-                Y = 10
-            };
-
-            var d = new Track
-            {
-                TagId = "Car321",
-                Altitude = 10,
-                X = 10,
-                Y = 10
-            };
-
-            var tracksInAirspaceArgs = new TracksInAirspaceArgs
-            {
-                Tracks = tracks  // Putter listen ned i tasken
-            };  // opret taske
-
-            uut.NewConditionsEvent += tracksInAirspaceHandler;
-            // tilføjer to fly til min liste
-            tracks.Add(a);          
-            tracks.Add(b);
-            tracks.Add(c);
-            tracks.Add(d);
-
-            uut.OnTrackRecieved(this, tracksInAirspaceArgs); // Giv tasken til Caro
-
-            // deregister the event because we are good boys and girls
-            uut.NewConditionsEvent -= tracksInAirspaceHandler;
+        // Do stuff that trickers event
+        var tracks = new List<Track>(); // opret liste
 
 
-            // Verify the amount of events
-            Assert.That(results.Count, Is.EqualTo(6)); // 
+        //opretter mange fly, med condition imellem
 
-        }
+        var a = new Track
+        {
+            TagId = "HEN123",
+            Altitude = 10,
+            X = 10,
+            Y = 10
+        };
+
+        var b = new Track
+        {
+            TagId = "HEN321",
+            Altitude = 10,
+            X = 10,
+            Y = 10
+        };
+
+        var c = new Track
+        {
+            TagId = "Car123",
+            Altitude = 10,
+            X = 10,
+            Y = 10
+        };
+
+        var d = new Track
+        {
+            TagId = "Car321",
+            Altitude = 10,
+            X = 10,
+            Y = 10
+        };
+
+        var tracksInAirspaceArgs = new TracksInAirspaceArgs
+        {
+            Tracks = tracks  // Putter listen ned i tasken
+        };  // opret taske
+
+        uut.NewConditionsEvent += tracksInAirspaceHandler;
+        // tilføjer flyene til min liste
+        tracks.Add(a);
+        tracks.Add(b);
+        tracks.Add(c);
+        tracks.Add(d);
+
+        uut.OnTrackRecieved(this, tracksInAirspaceArgs); // Giv tasken til Caro
+
+        // deregister the event because we are good boys and girls
+        uut.NewConditionsEvent -= tracksInAirspaceHandler;
+
+
+        // Verify the amount of events
+        Assert.That(results.Count, Is.EqualTo(6)); // 
+
+    }
 
         [Test]
         public void One_Separation_Condition_Occured_With_Four_Fligths_In_Airspace_Test()
+    {
+        // To keep result(s) after the event(s) has fired
+        var results = new List<List<ICondition>>();
+
+        // Our test handler
+        // This validates that the events arguments are correct
+        // Here we verify that the event indeed had as expected
+        // And we save the value to results, such that we can verify how many times 
+        // the event fired and they all were correct
+        EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
         {
-            // To keep result(s) after the event(s) has fired
-            var results = new List<List<ICondition>>();
-
-            // Our test handler
-            // This validates that the events arguments are correct
-            // Here we verify that the event indeed had as expected
-            // And we save the value to results, such that we can verify how many times 
-            // the event fired and they all were correct
-            EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
-            {
-                results.Add(e.Conditions);
-            };
+            results.Add(e.Conditions);
+        };
 
 
 
-            // Register the test event handler
+        // Register the test event handler
 
-            // Do stuff that trickers event
-            var tracks = new List<Track>
+        // Do stuff that trickers event
+        var tracks = new List<Track>
             {
                 new Track
                 {
@@ -496,47 +407,47 @@ namespace AirTrafficHandIn.Unit.Test
             };// opret liste
 
 
-            //opretter 4 fly, med kun 1 condition imellem
-
-          
-
-            var tracksInAirspaceArgs = new TracksInAirspaceArgs
-            {
-                Tracks = tracks  // Putter listen ned i tasken
-            };  // opret taske
-
-            uut.NewConditionsEvent += tracksInAirspaceHandler;
-
-            uut.OnTrackRecieved(this, tracksInAirspaceArgs); // Giv tasken til Caro
-
-            // deregister the event because we are good boys and girls
-            uut.NewConditionsEvent -= tracksInAirspaceHandler;
+        //opretter 4 fly, med kun 1 condition imellem
 
 
-            // Verify the amount of events
-            Assert.That(results.Count, Is.EqualTo(1)); // 1 events should be fired if 1 condition is met
 
-        }
+        var tracksInAirspaceArgs = new TracksInAirspaceArgs
+        {
+            Tracks = tracks  // Putter listen ned i tasken
+        };  // opret taske
+
+        uut.NewConditionsEvent += tracksInAirspaceHandler;
+
+        uut.OnTrackRecieved(this, tracksInAirspaceArgs); // Giv tasken til Caro
+
+        // deregister the event because we are good boys and girls
+        uut.NewConditionsEvent -= tracksInAirspaceHandler;
+
+
+        // Verify the amount of events
+        Assert.That(results.Count, Is.EqualTo(1)); // 1 events should be fired if 1 condition is met
+
+    }
 
         [Test]
         public void Is_No_Longere_ACondition_Condition_Removed()
+    {
+        // To keep result(s) after the event(s) has fired
+        var results = new List<List<ICondition>>();
+
+        // Our test handler
+        // This validates that the events arguments are correct
+        // Here we verify that the event indeed had as expected
+        // And we save the value to results, such that we can verify how many times 
+        // the event fired and they all were correct
+        EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
         {
-            // To keep result(s) after the event(s) has fired
-            var results = new List<List<ICondition>>();
+            results.Remove(e.Conditions);
+        };
+        // Register the test event handler
 
-            // Our test handler
-            // This validates that the events arguments are correct
-            // Here we verify that the event indeed had as expected
-            // And we save the value to results, such that we can verify how many times 
-            // the event fired and they all were correct
-            EventHandler<NewConditionArgs> tracksInAirspaceHandler = (object sender, NewConditionArgs e) =>
-            {
-                results.Remove(e.Conditions);
-            };
-            // Register the test event handler
-
-            // Do stuff that trickers event
-            var tracks = new List<Track>
+        // Do stuff that trickers event
+        var tracks = new List<Track>
             {
                 new Track
                 {
@@ -569,30 +480,72 @@ namespace AirTrafficHandIn.Unit.Test
 
             };// opret liste
 
-            var tracksInAirspaceArgs = new TracksInAirspaceArgs
-            {
-                Tracks = tracks  // Putter listen ned i tasken
-            };  // opret taske
+        var tracksInAirspaceArgs = new TracksInAirspaceArgs
+        {
+            Tracks = tracks  // Putter listen ned i tasken
+        };  // opret taske
 
-            uut.NewConditionsEvent += tracksInAirspaceHandler;
+        uut.NewConditionsEvent += tracksInAirspaceHandler;
 
-            uut.OnTrackRecieved(this, tracksInAirspaceArgs); // Giv tasken til Caro
+        uut.OnTrackRecieved(this, tracksInAirspaceArgs); // Giv tasken til Caro
 
-            // deregister the event because we are good boys and girls
-            uut.NewConditionsEvent -= tracksInAirspaceHandler;
-
-
-            // Verify the amount of events
-            Assert.That(results.Count, Is.EqualTo(0)); // 1 events should be fired if 1 condition is met
+        // deregister the event because we are good boys and girls
+        uut.NewConditionsEvent -= tracksInAirspaceHandler;
 
 
+        // Verify the amount of events
+        Assert.That(results.Count, Is.EqualTo(0)); // 1 events should be fired if 1 condition is met
 
-        }
 
 
     }
-    
+    }
+
 }
+    
+     
+
+        //[Test]
+        //public void CurrentConditionsTest()
+        //{
+
+
+        //    // To keep result(s) after the event(s) has fired
+        //    var results = new List<List<ICondition>>();
+
+        //    // Our test handler
+        //    // This validates that the events arguments are correct
+        //    // Here we verify that the event indeed had as expected
+        //    // And we save the value to results, such that we can verify how many times 
+        //    // the event fired and they all were correct
+        //    EventHandler<CurrentConditionArgs> tracksInAirspaceHandler = (object sender, CurrentConditionArgs e) =>
+        //    {
+        //        results.Add(e.Conditions);
+        //    };
+
+
+        //    // Do stuff that trickers event
+        //    List<Track> tracksEmptyList = new List<Track>(); // opret liste
+        //    // Evt tilføj ting på listen
+        //    var newTrack = new TracksInAirspaceArgs
+        //    {
+        //        Tracks = tracksEmptyList  // Putter listen ned i tasken
+        //    };  // opret taske
+
+
+        //    // Register the test event handler
+        //    uut.NewConditionsEvent += tracksInAirspaceHandler;
+
+        //    this.uut.OnTrackRecieved(this, newTrack); // Giv tasken til Caro
+
+        //    // deregister the event because we are good boys and girls
+        //    uut.NewConditionsEvent -= tracksInAirspaceHandler;
+
+
+        //    // Verify the amount of events
+        //    Assert.That(results.Count, Is.EqualTo(0)); // Zero events should be fired if no condition is met
+
+
     //    public delegate void AnswerHandler(object sender, AnswerEventArgs e);
 
         //    public class AnswerEventArgs : EventArgs

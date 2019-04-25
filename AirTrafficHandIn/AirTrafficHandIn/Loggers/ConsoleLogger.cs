@@ -16,12 +16,14 @@ namespace AirTrafficHandIn
 
 
 
-        public void LogTrackEntered(object sender, ICollection<Track> logtrack)
+        public void LogTrackEntered(object sender, NewTrackInAirSpaceArgs args)
         {
-            foreach (var plane_info in logtrack)
-            {
-                trackEnteredString += $"At time: {plane_info.TimeStamp} the following plane {plane_info.TagId} entered the airspace";
-            }
+            Console.WriteLine($"At time: {args.Track.TimeStamp} the following plane {args.Track.TagId} entered the airspace");
+        }
+
+        public void LogTrackLeft(object sender, TrackLeavesAirSpaceArgs args)
+        {
+            Console.WriteLine($"At time: {args.Track.TimeStamp} the following plane {args.Track.TagId} left the airspace");
         }
 
         public void LogSeperation(object sender, ICollection<string> logtrack)

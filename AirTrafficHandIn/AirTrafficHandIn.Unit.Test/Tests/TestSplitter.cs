@@ -45,7 +45,7 @@ namespace AirTrafficHandIn.Unit.Test
         }
 
         [Test]
-        public void SplitData_CheckIf_SplitData_IsCorrect_Test()
+        public void SplitData_CheckIf_SplitData_IsCorrect_True_Test()
         {
             var trackData = new List<string>
             {
@@ -87,7 +87,7 @@ namespace AirTrafficHandIn.Unit.Test
         }
 
         [Test]
-        public void SplitData_CheckIf_SplitData_IsCorrect_Test2()
+        public void SplitData_CheckIf_SplitData_IsCorrect_False_Test2()
         {
             var trackData = new List<string>
             {

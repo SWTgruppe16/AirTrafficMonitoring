@@ -15,6 +15,7 @@ namespace AirTrafficHandInApp
     {
         static void Main(string[] args)
         {
+            ConsoleLogger consoleLogger = new ConsoleLogger();
             var transponderReceiver = TransponderReceiver.TransponderReceiverFactory.CreateTransponderDataReceiver();
             var splitter = new Splitter();
             transponderReceiver.TransponderDataReady += splitter.OnTransponderData;
@@ -30,6 +31,8 @@ namespace AirTrafficHandInApp
             };
             var tracker = new TrackCalculator();
             var airspace_monitor = new AirspaceMonitor(airspace, tracker);
+            airspace_monitor.NewTrackInTairSpaceEvent += consoleLogger.LogTrackEntered;
+            airspace_monitor.TrackLeavesAirSpaceEvent += consoleLogger.LogTrackLeft;
             
             //splitter.newTrack += delegate(object sender, NewTrackArgs trackArgs)
             //{

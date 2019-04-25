@@ -49,9 +49,6 @@ namespace AirTrafficHandIn
                 // Adding track to complete list
                 tracks.Add(track);
 
-                // Adding track to event list
-                tracks.Add(track);
-
             }
 
             return tracks;

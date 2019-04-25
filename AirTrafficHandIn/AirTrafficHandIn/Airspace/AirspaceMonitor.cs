@@ -12,11 +12,23 @@ namespace AirTrafficHandIn
         public List<Track> Tracks { get; set; }
     }
 
+    public class NewTrackInAirSpaceArgs : EventArgs
+    {
+        public Track Track { get; set; }
+    }
+
+    public class TrackLeavesAirSpaceArgs : EventArgs
+    {
+        public Track Track { get; set; }
+    }
+
     public class AirspaceMonitor
     {
         public readonly List<Track> TracksInAirspace;
         public readonly Airspace Airspace;
-        public event EventHandler<TracksInAirspaceArgs> TracksInAirspaceEvent = delegate{};
+        public event EventHandler<TracksInAirspaceArgs> TracksInAirspaceEvent = delegate { };
+        public event EventHandler<NewTrackInAirSpaceArgs> NewTrackInTairSpaceEvent = delegate { };
+        public event EventHandler<TrackLeavesAirSpaceArgs> TrackLeavesAirSpaceEvent = delegate { };
         public readonly ITrack Tracker;
 
         public AirspaceMonitor(Airspace airspace, ITrack tracker)
@@ -42,7 +54,7 @@ namespace AirTrafficHandIn
 
         public void OnTrackRecieved(object sender, NewTrackArgs newTrackArgs)
         {
-
+            
             // Loop through list of tracks
             foreach (var track in newTrackArgs.Tracks)
             {
@@ -55,12 +67,13 @@ namespace AirTrafficHandIn
                     TracksInAirspace.Remove(old_track);
                 }
 
-
-
                 // If not in airspace
                 // do nothing
                 if (!Airspace.IsInside(track.X, track.Y, track.Altitude))
                 {
+                    if (old_track != null) {
+                        TrackLeavesAirSpaceEvent?.Invoke(this, new TrackLeavesAirSpaceArgs{Track = old_track});
+                    }
                     //Console.WriteLine("Not in Airspace: " + track.TagId);
 
                     continue;
@@ -70,6 +83,8 @@ namespace AirTrafficHandIn
                 {
                     Tracker.calculateCompassCourse(old_track, track);
                     Tracker.calculateSpeed(old_track, track);
+                } else {
+                    NewTrackInTairSpaceEvent?.Invoke(this, new NewTrackInAirSpaceArgs { Track = track });
                 }
 
                 //Console.WriteLine("In Airspace with speed: " + track.TagId + " " + track.Velocity);

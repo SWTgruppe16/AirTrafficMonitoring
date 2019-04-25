@@ -78,9 +78,6 @@ namespace AirTrafficHandIn.Unit.Test
             newTrack.Tracks = _fakeTracksInAirspace; 
             Uut.OnTrackRecieved(this, newTrack);
         }
-
-
-
         [TestCase(TestName ="Add Planes Should Return NotIsEmpty")]
         public void AirspaceMonitorTest()
         {
@@ -97,11 +94,6 @@ namespace AirTrafficHandIn.Unit.Test
 
             Assert.That(comparison, Is.EqualTo(testResult));
         }
-
-
-        
-
-
 
 
         [Test]
